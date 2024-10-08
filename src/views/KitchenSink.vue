@@ -18,20 +18,6 @@ const vmDemo = ref<string>('')
 </script>
 
 <template>
-	<BaseIcon icon="icn-terminal" size="large" />
-	<BaseIcon icon="icn-arrow-right" size="large" />
-	<BaseIcon icon="icn-caret-right" size="large" />
-	<BaseIcon icon="icn-bookmark" size="large" />
-
-	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-
-	<BaseIcon icon="icn-terminal" />
-	<BaseIcon icon="icn-arrow-right" />
-	<BaseIcon icon="icn-caret-right" />
-	<BaseIcon icon="icn-bookmark" />
-
-	<hr />
-
 	<h1>Header 1</h1>
 	<h2>Header 2</h2>
 	<h3>Header 3</h3>
@@ -98,6 +84,24 @@ const vmDemo = ref<string>('')
 	<cv-button>Primary</cv-button>
 	<cv-button kind="secondary">Secondary</cv-button>
 	<cv-button kind="tertiary">Tertiary</cv-button>
+
+	<hr />
+
+	<div>Large icons</div>
+	<br />
+	<BaseIcon icon="icn-terminal" size="large" />
+	<BaseIcon icon="icn-arrow-right" size="large" />
+	<BaseIcon icon="icn-caret-right" size="large" />
+	<BaseIcon icon="icn-bookmark" size="large" />
+
+	<br /><br /><br /><br />
+
+	<div>Small icons</div>
+	<br />
+	<BaseIcon icon="icn-terminal" />
+	<BaseIcon icon="icn-arrow-right" />
+	<BaseIcon icon="icn-caret-right" />
+	<BaseIcon icon="icn-bookmark" />
 
 	<hr />
 </template>
