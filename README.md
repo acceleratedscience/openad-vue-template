@@ -7,17 +7,19 @@ This a Vue template with some boilerplate code, meant as a quick-start for futur
 
 ### Included:
 
-- A Vite build of Vue with:
-  - Vue Router
-  - Pinia for state management
-  - Vitest for unit testing
-  - Playwright for end-to-end testing
-  - ESLint for code quality
-  - Prettier for code formatting
-  - Vue DevTools 7 for debugging
-- Carbon Vue components
-- A modular API service with response/request interceptors
-- A few templates to get you started
+-   A Vite build of Vue with:
+    -   **Vue Router**
+    -   **Pinia** for state management
+    -   **Vitest** for unit testing
+    -   **Playwright** for end-to-end testing
+    -   **ESLint** for code quality
+    -   **Prettier** for code formatting
+    -   **Vue DevTools 7** for debugging
+-   Carbon Vue components
+-   A ready-to-roll main navigation
+-   Icon system supporting dynamic SVG imports
+-   A modular API service with response/request interceptors
+-   A few example templates to get you started
 
 ## Recommended IDE Setup
 
