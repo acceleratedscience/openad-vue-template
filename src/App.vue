@@ -1,4 +1,5 @@
 <script setup lang="ts">
+<<<<<<< HEAD
 // Vue
 import { computed, onBeforeMount, onMounted, ref } from 'vue'
 
@@ -180,11 +181,57 @@ function storeScreenWidth() {
 </template>
 
 <!----------------------------------------------------->
+=======
+// Router
+import { useRouter, useRoute } from 'vue-router'
+const route = useRoute()
+
+// Components
+import NavMain from '@/components/NavMain.vue'
+</script>
+
+<template>
+	<NavMain v-if="!route.meta.hideNav" />
+	<div id="main-wrap" :class="{ 'nav-space': !route.meta.hideNav }">
+		<!-- Usability shortcut - https://carbondesignsystem.com/components/UI-shell-header/accessibility/ -->
+		<a name="main-content"></a>
+
+		<!-- Router view -->
+		<RouterView />
+	</div>
+	<!-- <h1>Hello</h1>
+	<h2>World</h2>
+	<cv-button>Back</cv-button>
+	<cv-text-input helperText="Same helper text" label="Text input label" placeholder="Sample placeholder"> ZZZZ </cv-text-input> -->
+
+	<!-- <nav>
+        <RouterLink to="/">Home</RouterLink>
+        <RouterLink to="/about">About</RouterLink>
+    </nav>
+  <header>
+    <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
+
+    <div class="wrapper">
+      <HelloWorld msg="You did it!" />
+
+      
+    </div>
+  </header>
+
+   -->
+</template>
+>>>>>>> 0861eb5 (Free Palestine)
 
 <style scoped lang="scss">
 // This is the content wrap that owns the page margin
 // and is centered and limited in width.
 #main-wrap {
+<<<<<<< HEAD
+=======
+	// display: flex;
+	// flex-direction: column;
+	padding-bottom: 0;
+>>>>>>> 0861eb5 (Free Palestine)
 	box-sizing: border-box;
 	height: min-content; // Required for bottom padding to show
 	min-height: 100vh; // To avoid bottom shadow when content is short.
@@ -200,6 +247,7 @@ function storeScreenWidth() {
 
 // Push content down to fit nav
 #main-wrap.nav-space {
+<<<<<<< HEAD
 	padding-top: 5.5rem;
 }
 
@@ -219,5 +267,8 @@ function storeScreenWidth() {
 	#main-wrap.nav-space {
 		padding-top: 4.25rem;
 	}
+=======
+	margin-top: 3rem;
+>>>>>>> 0861eb5 (Free Palestine)
 }
 </style>

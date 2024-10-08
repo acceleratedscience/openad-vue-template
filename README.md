@@ -7,6 +7,7 @@ This a Vue template with some boilerplate code, meant as a quick-start for futur
 
 ### Included:
 
+<<<<<<< HEAD
 -   A Vite build of Vue with:
     -   **Vue Router**
     -   **Pinia** for state management
@@ -30,6 +31,19 @@ This a Vue template with some boilerplate code, meant as a quick-start for futur
     -   Scroll-to-top icon
     -   A click-to-copy directive
 -   A few example templates to get you started
+=======
+- A Vite build of Vue with:
+  - Vue Router
+  - Pinia for state management
+  - Vitest for unit testing
+  - Playwright for end-to-end testing
+  - ESLint for code quality
+  - Prettier for code formatting
+  - Vue DevTools 7 for debugging
+- Carbon Vue components
+- A modular API service with response/request interceptors
+- A few templates to get you started
+>>>>>>> 0861eb5 (Free Palestine)
 
 ## Recommended IDE Setup
 
