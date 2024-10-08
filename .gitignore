@@ -1,0 +1,23 @@
+# Default
+node_modules
+.DS_Store
+*.local
+
+# Logs
+logs
+*.log
+npm-debug.log*
+
+# Build folders
+/dist
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+*.tsbuildinfo
+

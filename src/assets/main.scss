@@ -1,0 +1,39 @@
+@import './base.scss';
+@import './carbon-fixes.scss';
+@import './carbon-overrides.scss';
+
+// Text sizes
+.xlarge {
+	font-size: $font-size-xlarge;
+	line-height: $line-height-xlarge;
+}
+.large {
+	font-size: $font-size-large;
+	line-height: $line-height-large;
+}
+.small {
+	font-size: $font-size-small;
+	line-height: $line-height-small;
+}
+.xsmall {
+	font-size: $font-size-xsmall;
+	line-height: $line-height-xsmall;
+}
+
+// Horizontal line
+hr {
+	border-top: none;
+	border-bottom: solid 1px $black-10;
+	margin: 3rem 0;
+}
+hr.slim {
+	margin: 0;
+}
+
+// Title + paragraph
+h1 + p,
+h2 + p,
+h3 + p,
+h4 + p {
+	margin-top: -0.75rem;
+}

@@ -1,0 +1,25 @@
+html {
+	// Base for all rem values
+	font-size: 16px;
+}
+body {
+	color: $black;
+}
+
+/**
+ * Responsive page margin
+ */
+
+:root {
+	--page-margin: 5rem; // 80px
+}
+@media (max-width: $bp-medium) {
+	:root {
+		--page-margin: 2.5rem; // 40px
+	}
+}
+@media (max-width: $bp-small) {
+	:root {
+		--page-margin: 1.25rem; // 20px
+	}
+}
