@@ -15,10 +15,14 @@ This a Vue template with some boilerplate code, meant as a quick-start for futur
     -   **ESLint** for code quality
     -   **Prettier** for code formatting
     -   **Vue DevTools 7** for debugging
--   Carbon Vue components
+-   Carbon Vue components + various fixes & improvements
+-   Simplified and opinionated Carbon-based styles
 -   A ready-to-roll main navigation
--   Icon system supporting dynamic SVG imports
 -   A modular API service with response/request interceptors
+-   A number of useful additional components:
+    -   Icon compoment supporting dynamic SVG imports
+    -   Collapsable sections
+    -   Content loader
 -   A few example templates to get you started
 
 ## Recommended IDE Setup
