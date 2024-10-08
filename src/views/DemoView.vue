@@ -3,6 +3,7 @@
 import { ref, computed } from 'vue'
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 // Router
 import { useRouter, useRoute } from 'vue-router'
 const router = useRouter()
@@ -12,10 +13,15 @@ const route = useRoute()
 // import { useModalStore } from '@/stores/ModalStore'
 // const modalStore = useModalStore()
 =======
+=======
+>>>>>>> 0861eb5 (Free Palestine)
 // // Router
 // import { useRouter, useRoute } from 'vue-router'
 // const router = useRouter()
 // const route = useRoute()
+<<<<<<< HEAD
+>>>>>>> 0861eb5 (Free Palestine)
+=======
 >>>>>>> 0861eb5 (Free Palestine)
 
 // Type declarations
@@ -23,7 +29,11 @@ import type { ComputedRef } from 'vue'
 
 // Components
 <<<<<<< HEAD
+<<<<<<< HEAD
 import BaseBreadcrumbs from '@/components/BaseBreadcrumbs.vue'
+=======
+// import NavMain from '@/components/NavMain.vue'
+>>>>>>> 0861eb5 (Free Palestine)
 =======
 // import NavMain from '@/components/NavMain.vue'
 >>>>>>> 0861eb5 (Free Palestine)
@@ -101,11 +111,16 @@ function updateFlavor(customFlavor: string) {
 </script>
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 <!----------------------------------------------------->
 
 <template>
 	<BaseBreadcrumbs />
 	<h1>Flavor Picker</h1>
+=======
+<template>
+	<h3>Flavor Picker</h3>
+>>>>>>> 0861eb5 (Free Palestine)
 =======
 <template>
 	<h3>Flavor Picker</h3>
@@ -128,8 +143,11 @@ function updateFlavor(customFlavor: string) {
 </template>
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 <!----------------------------------------------------->
 
+=======
+>>>>>>> 0861eb5 (Free Palestine)
 =======
 >>>>>>> 0861eb5 (Free Palestine)
 <style scoped lang="scss">
@@ -146,7 +164,10 @@ function updateFlavor(customFlavor: string) {
 	align-items: flex-end;
 	flex: 1;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	gap: 0;
+=======
+>>>>>>> 0861eb5 (Free Palestine)
 =======
 >>>>>>> 0861eb5 (Free Palestine)
 }
@@ -158,6 +179,12 @@ function updateFlavor(customFlavor: string) {
 	margin-top: 0.5rem;
 }
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+.soft {
+	opacity: 0.3;
+}
+>>>>>>> 0861eb5 (Free Palestine)
 =======
 .soft {
 	opacity: 0.3;

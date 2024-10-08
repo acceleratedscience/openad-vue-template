@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 <script setup lang="ts"></script>
 
 <!----------------------------------------------------->
@@ -55,6 +56,8 @@
 		</ul>
 	</main>
 =======
+=======
+>>>>>>> 0861eb5 (Free Palestine)
 <script setup lang="ts">
 import TheWelcome from '../components/TheWelcome.vue'
 </script>
@@ -63,5 +66,8 @@ import TheWelcome from '../components/TheWelcome.vue'
     <main>
         <TheWelcome />
     </main>
+<<<<<<< HEAD
+>>>>>>> 0861eb5 (Free Palestine)
+=======
 >>>>>>> 0861eb5 (Free Palestine)
 </template>

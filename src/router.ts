@@ -1,6 +1,11 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 import { useMainStore } from '@/stores/MainStore'
 import { createRouter, createWebHistory } from 'vue-router'
+=======
+import { createRouter, createWebHistory } from 'vue-router'
+import HomeView from './views/HomeView.vue'
+>>>>>>> 0861eb5 (Free Palestine)
 =======
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from './views/HomeView.vue'
@@ -11,6 +16,7 @@ const router = createRouter({
 	routes: [
 		{
 			path: '/',
+<<<<<<< HEAD
 <<<<<<< HEAD
 			name: 'Home',
 			meta: { hideNav: true },
@@ -38,6 +44,8 @@ const router = createRouter({
 			name: 'Error',
 			component: () => import('./views/ErrorView.vue'),
 =======
+=======
+>>>>>>> 0861eb5 (Free Palestine)
 			name: 'home',
 			meta: { hideNav: true },
 			component: HomeView,
@@ -46,11 +54,15 @@ const router = createRouter({
 			path: '/kitchensink',
 			name: 'kitchensink',
 			component: () => import('./views/KitchenSink.vue'),
+<<<<<<< HEAD
+>>>>>>> 0861eb5 (Free Palestine)
+=======
 >>>>>>> 0861eb5 (Free Palestine)
 		},
 	],
 })
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 // // Conditional redirect (eg. when session expired)
 // router.beforeEach((to, from, next) => {
@@ -61,6 +73,8 @@ const router = createRouter({
 // 	}
 // })
 
+=======
+>>>>>>> 0861eb5 (Free Palestine)
 =======
 >>>>>>> 0861eb5 (Free Palestine)
 export default router

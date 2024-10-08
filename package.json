@@ -18,7 +18,10 @@
     "@carbon/styles": "^1.66.1",
     "@carbon/vue": "^3.0.21",
 <<<<<<< HEAD
+<<<<<<< HEAD
     "axios": "^1.7.7",
+=======
+>>>>>>> 0861eb5 (Free Palestine)
 =======
 >>>>>>> 0861eb5 (Free Palestine)
     "pinia": "^2.1.7",
@@ -32,7 +35,11 @@
     "@tsconfig/node20": "^20.1.4",
     "@types/jsdom": "^21.1.7",
 <<<<<<< HEAD
+<<<<<<< HEAD
     "@types/node": "^20.16.11",
+=======
+    "@types/node": "^20.14.5",
+>>>>>>> 0861eb5 (Free Palestine)
 =======
     "@types/node": "^20.14.5",
 >>>>>>> 0861eb5 (Free Palestine)

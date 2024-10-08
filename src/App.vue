@@ -1,5 +1,6 @@
 <script setup lang="ts">
 <<<<<<< HEAD
+<<<<<<< HEAD
 // Vue
 import { computed, onBeforeMount, onMounted, ref } from 'vue'
 
@@ -182,6 +183,8 @@ function storeScreenWidth() {
 
 <!----------------------------------------------------->
 =======
+=======
+>>>>>>> 0861eb5 (Free Palestine)
 // Router
 import { useRouter, useRoute } from 'vue-router'
 const route = useRoute()
@@ -220,6 +223,9 @@ import NavMain from '@/components/NavMain.vue'
 
    -->
 </template>
+<<<<<<< HEAD
+>>>>>>> 0861eb5 (Free Palestine)
+=======
 >>>>>>> 0861eb5 (Free Palestine)
 
 <style scoped lang="scss">
@@ -227,6 +233,12 @@ import NavMain from '@/components/NavMain.vue'
 // and is centered and limited in width.
 #main-wrap {
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	// display: flex;
+	// flex-direction: column;
+	padding-bottom: 0;
+>>>>>>> 0861eb5 (Free Palestine)
 =======
 	// display: flex;
 	// flex-direction: column;
@@ -248,6 +260,7 @@ import NavMain from '@/components/NavMain.vue'
 // Push content down to fit nav
 #main-wrap.nav-space {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	padding-top: 5.5rem;
 }
 
@@ -267,6 +280,9 @@ import NavMain from '@/components/NavMain.vue'
 	#main-wrap.nav-space {
 		padding-top: 4.25rem;
 	}
+=======
+	margin-top: 3rem;
+>>>>>>> 0861eb5 (Free Palestine)
 =======
 	margin-top: 3rem;
 >>>>>>> 0861eb5 (Free Palestine)

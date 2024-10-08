@@ -37,12 +37,17 @@ const props = withDefaults(
 </script>
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 <!----------------------------------------------------->
 
 <template>Hello</template>
 
 <!----------------------------------------------------->
 
+=======
+<template>Hello</template>
+
+>>>>>>> 0861eb5 (Free Palestine)
 =======
 <template>Hello</template>
 

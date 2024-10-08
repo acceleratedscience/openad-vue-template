@@ -1,5 +1,6 @@
 <script setup lang="ts">
 <<<<<<< HEAD
+<<<<<<< HEAD
 // Router
 import { useRoute } from 'vue-router'
 const route = useRoute()
@@ -33,6 +34,8 @@ export type NavMainTree = {
 	sidePanels: _SidePanel[]
 }
 =======
+=======
+>>>>>>> 0861eb5 (Free Palestine)
 // Vue
 // import { ref, computed } from 'vue'
 
@@ -43,11 +46,15 @@ export type NavMainTree = {
 
 // Type declarations
 // import type { ComputedRef } from 'vue'
+<<<<<<< HEAD
+>>>>>>> 0861eb5 (Free Palestine)
+=======
 >>>>>>> 0861eb5 (Free Palestine)
 
 // Components
 import BaseIcon from '@/components/BaseIcon.vue'
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 // Props
 const props = defineProps<{
@@ -55,6 +62,8 @@ const props = defineProps<{
 }>()
 const { homeLink, items, sidePanels } = props.tree
 =======
+=======
+>>>>>>> 0861eb5 (Free Palestine)
 // Utils
 
 // Definitions
@@ -72,11 +81,15 @@ const { homeLink, items, sidePanels } = props.tree
 /**
  * Computed properties
  */
+<<<<<<< HEAD
+>>>>>>> 0861eb5 (Free Palestine)
+=======
 >>>>>>> 0861eb5 (Free Palestine)
 
 /**
  * Methods
  */
+<<<<<<< HEAD
 <<<<<<< HEAD
 
 function blurFocus() {
@@ -142,6 +155,8 @@ function blurFocus() {
 						</cv-switcher-item>
 					</template>
 =======
+=======
+>>>>>>> 0861eb5 (Free Palestine)
 </script>
 
 <template>
@@ -222,6 +237,9 @@ function blurFocus() {
 					<cv-switcher-item>
 						<cv-switcher-item-link href="javascript:void(0)">Logout</cv-switcher-item-link>
 					</cv-switcher-item>
+<<<<<<< HEAD
+>>>>>>> 0861eb5 (Free Palestine)
+=======
 >>>>>>> 0861eb5 (Free Palestine)
 				</cv-switcher>
 			</cv-header-panel>
@@ -230,8 +248,11 @@ function blurFocus() {
 </template>
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 <!----------------------------------------------------->
 
+=======
+>>>>>>> 0861eb5 (Free Palestine)
 =======
 >>>>>>> 0861eb5 (Free Palestine)
 <style scoped lang="scss">
@@ -242,6 +263,7 @@ function blurFocus() {
 	border: none;
 }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 /// Make top links fit full height
 li.cv-header-menu,
@@ -292,6 +314,8 @@ a.cv-header-name.router-link-exact-active {
 
 =======
 >>>>>>> 0861eb5 (Free Palestine)
+=======
+>>>>>>> 0861eb5 (Free Palestine)
 /// Stylize focus states
 .bx--skip-to-content:focus {
 	border: none;
@@ -302,10 +326,13 @@ a.cv-header-name.router-link-exact-active {
 	background: $black;
 }
 <<<<<<< HEAD
+<<<<<<< HEAD
 .cv-button.bx--btn {
 	// Prevent ugly focus state flash on blur
 	transition: none;
 }
+=======
+>>>>>>> 0861eb5 (Free Palestine)
 =======
 >>>>>>> 0861eb5 (Free Palestine)
 .cv-button.bx--btn:focus {
@@ -360,6 +387,7 @@ a.cv-switcher-item-link.bx--switcher__item-link--selected {
 	background: $black-30;
 }
 <<<<<<< HEAD
+<<<<<<< HEAD
 // Current-page state
 a.cv-switcher-item-link.router-link-exact-active {
 	text-decoration: none;
@@ -377,12 +405,15 @@ a.cv-switcher-item-link.router-link-exact-active::after {
 }
 =======
 >>>>>>> 0861eb5 (Free Palestine)
+=======
+>>>>>>> 0861eb5 (Free Palestine)
 
 /**
  * Responsive
  */
 
 @media (hover: hover) {
+<<<<<<< HEAD
 <<<<<<< HEAD
 	// Project hover state
 	a.cv-header-name:hover {
@@ -400,6 +431,8 @@ a.cv-switcher-item-link.router-link-exact-active::after {
 	}
 
 	// Side panel hover state
+=======
+>>>>>>> 0861eb5 (Free Palestine)
 =======
 >>>>>>> 0861eb5 (Free Palestine)
 	a.cv-switcher-item-link:not(.bx--switcher__item-link--selected):hover {

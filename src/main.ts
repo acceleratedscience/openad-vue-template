@@ -13,9 +13,12 @@ import router from './router'
 import App from './App.vue'
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 // Directives
 import clickToCopy from '@/directives/click-to-copy'
 
+=======
+>>>>>>> 0861eb5 (Free Palestine)
 =======
 >>>>>>> 0861eb5 (Free Palestine)
 // Create app
@@ -26,7 +29,10 @@ app.use(createPinia())
 app.use(router)
 app.use(CarbonComponentsVue)
 <<<<<<< HEAD
+<<<<<<< HEAD
 app.directive('click-to-copy', clickToCopy)
+=======
+>>>>>>> 0861eb5 (Free Palestine)
 =======
 >>>>>>> 0861eb5 (Free Palestine)
 
