@@ -12,6 +12,9 @@ import { createPinia } from 'pinia'
 import router from './router'
 import App from './App.vue'
 
+// Directives
+import clickToCopy from '@/directives/click-to-copy'
+
 // Create app
 const app = createApp(App)
 
@@ -19,6 +22,7 @@ const app = createApp(App)
 app.use(createPinia())
 app.use(router)
 app.use(CarbonComponentsVue)
+app.directive('click-to-copy', clickToCopy)
 
 // Mount app
 app.mount('#app')

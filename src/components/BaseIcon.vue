@@ -1,17 +1,3 @@
-<template>
-	<SvgComponent v-if="SvgComponent" class="svg" :style="{ '--svg-dims': widthHeightPx }" />
-	<svg
-		v-else
-		:width="widthHeight"
-		:height="widthHeight"
-		:viewBox="`0 0 ${widthHeight} ${widthHeight}`"
-		fill="none"
-		xmlns="http://www.w3.org/2000/svg"
-	>
-		<rect :width="widthHeight" :height="widthHeight" />
-	</svg>
-</template>
-
 <script lang="ts" setup>
 import { shallowRef, computed, onMounted } from 'vue'
 import type { ComputedRef } from 'vue'
@@ -49,6 +35,24 @@ onMounted(async () => {
 	SvgComponent.value = svgComp
 })
 </script>
+
+<!----------------------------------------------------->
+
+<template>
+	<SvgComponent v-if="SvgComponent" class="svg" :style="{ '--svg-dims': widthHeightPx }" />
+	<svg
+		v-else
+		:width="widthHeight"
+		:height="widthHeight"
+		:viewBox="`0 0 ${widthHeight} ${widthHeight}`"
+		fill="none"
+		xmlns="http://www.w3.org/2000/svg"
+	>
+		<rect :width="widthHeight" :height="widthHeight" />
+	</svg>
+</template>
+
+<!----------------------------------------------------->
 
 <style scoped lang="scss">
 .svg {

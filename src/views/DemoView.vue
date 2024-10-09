@@ -85,6 +85,8 @@ function updateFlavor(customFlavor: string) {
 }
 </script>
 
+<!----------------------------------------------------->
+
 <template>
 	<h3>Flavor Picker</h3>
 
@@ -103,6 +105,8 @@ function updateFlavor(customFlavor: string) {
 	</div>
 	<div v-if="showScreenWidth" id="screen-width">Screen width: {{ screenWidth }} / Options height: {{ $options?.offsetHeight }}</div>
 </template>
+
+<!----------------------------------------------------->
 
 <style scoped lang="scss">
 #options {
@@ -124,9 +128,6 @@ function updateFlavor(customFlavor: string) {
 #display > div {
 	font-size: 1.5rem;
 	margin-top: 0.5rem;
-}
-.soft {
-	opacity: 0.3;
 }
 #screen-width {
 	position: fixed;

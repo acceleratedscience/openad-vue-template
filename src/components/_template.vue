@@ -36,6 +36,10 @@ const props = withDefaults(
  */
 </script>
 
+<!----------------------------------------------------->
+
 <template>Hello</template>
+
+<!----------------------------------------------------->
 
 <style scoped lang="scss"></style>

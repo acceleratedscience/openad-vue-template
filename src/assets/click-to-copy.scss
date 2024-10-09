@@ -1,0 +1,38 @@
+/**
+ * Styled that go with the click-to-copy directive.
+ */
+
+.click-copy {
+	cursor: pointer;
+}
+.copy-blink {
+	animation: blink 100ms 3;
+	color: $success;
+}
+@keyframes blink {
+	0% {
+		opacity: 1;
+	}
+	49% {
+		opacity: 1;
+	}
+	50% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 0;
+	}
+}
+
+@media (hover: hover) {
+	*:not(table).click-copy:not(.copy-blink):hover {
+		text-decoration: underline;
+		text-decoration-style: dashed;
+		text-decoration-thickness: 1px;
+		text-decoration-color: $success-soft;
+	}
+	table.click-copy:not(.copy-blink):hover td,
+	table.click-copy:not(.copy-blink):hover th {
+		border-color: $success-soft;
+	}
+}

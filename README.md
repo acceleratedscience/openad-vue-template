@@ -22,8 +22,11 @@ This a Vue template with some boilerplate code, meant as a quick-start for futur
 -   Baked-in responsive behavior
 -   A number of useful additional components:
     -   Icon compoment supporting dynamic SVG imports
+    -   Breadcrumbs
     -   Collapsable sections
     -   Content loader
+    -   Scroll-to-top icon
+    -   A click-to-copy directive
 -   A few example templates to get you started
 
 ## Recommended IDE Setup

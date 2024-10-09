@@ -17,6 +17,62 @@ a:not(.dumb).router-link-exact-active:hover {
 }
 
 /**
+ * Undo aggressive reset
+ */
+
+// Text styles
+body {
+	font-size: $font-size;
+	line-height: $line-height;
+}
+i {
+	font-style: italic;
+}
+b {
+	font-weight: 600;
+}
+p {
+	font-size: $font-size;
+	line-height: $line-height;
+	margin-bottom: 1rem;
+}
+pre {
+	font-family: 'IBM Plex Mono', monospace;
+	tab-size: 2;
+}
+
+// Lists
+ul {
+	list-style: disc;
+	margin-inline-start: 1.25rem;
+	font-size: $font-size;
+}
+ol {
+	list-style: decimal;
+	margin-inline-start: 1.25rem;
+}
+ul li,
+ol li {
+	margin-bottom: 0.125rem;
+}
+ol li {
+	padding-left: 0.125rem;
+}
+ol li::marker {
+	font-size: $font-size-small;
+}
+ul.compact li,
+ol.compact li {
+	margin-bottom: 0;
+}
+.bx--dropdown ul {
+	margin-inline-start: 0;
+}
+.bx--dropdown ul li {
+	margin-bottom: 0;
+}
+
+/**
  * Modals
  */
 
@@ -75,11 +131,6 @@ input.bx--text-input {
 
 // Hover states
 @media (hover: hover) {
-	// Links in carbon css don't have hover state
-	a:hover {
-		color: $blue-hover;
-	}
-
 	// Dropdowns have a too dark hover color
 	.bx--dropdown:hover {
 		background: $soft-bg-hover;

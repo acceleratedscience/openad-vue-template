@@ -34,12 +34,27 @@ import BaseIcon from '@/components/BaseIcon.vue'
 /**
  * Methods
  */
+
+function onPanelResize() {
+	console.log('Panel resized')
+}
+function onFunc1() {
+	console.log('Function 1')
+}
+function onFunc2() {
+	console.log('Function 1')
+}
+function onFunc3() {
+	console.log('Function 1')
+}
 </script>
+
+<!----------------------------------------------------->
 
 <template>
 	<cv-header aria-label="Main navigation">
 		<cv-skip-to-content href="#main-content">Skip to content</cv-skip-to-content>
-		<cv-header-name href="javascript:void(0)" prefix="OpenAD">Portal</cv-header-name>
+		<cv-header-name href="javascript:void(0)" prefix="OpenAD">Vue Template</cv-header-name>
 
 		<!-- Menu items -->
 		<cv-header-nav aria-label="Carbon nav">
@@ -119,6 +134,8 @@ import BaseIcon from '@/components/BaseIcon.vue'
 		</template>
 	</cv-header>
 </template>
+
+<!----------------------------------------------------->
 
 <style scoped lang="scss">
 /// Remove superfluous borders that interfere with focus state
