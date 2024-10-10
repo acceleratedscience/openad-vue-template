@@ -55,10 +55,13 @@ onMounted(() => jumpToAnchor(anchorLink.value))
 <!----------------------------------------------------->
 
 <style scoped lang="scss">
+hr {
+	margin-top: 9rem;
+}
 h5 {
 	text-transform: uppercase;
 	font-size: $font-size-xsmall;
 	margin-top: -2.75rem;
-	margin-bottom: 2.75rem;
+	margin-bottom: 2.5rem;
 }
 </style>

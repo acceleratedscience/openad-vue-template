@@ -11,6 +11,10 @@ import { ref, onMounted, onBeforeUnmount } from 'vue'
 import { useModalStore } from '@/stores/ModalStore'
 const modalStore = useModalStore()
 
+// Stores
+import { useMainStore } from '@/stores/MainStore'
+const mainStore = useMainStore()
+
 // Type declarations
 import type { ActionOption } from '@/components/OverflowMenu.vue'
 type MultiSelectOption = {
@@ -259,6 +263,7 @@ const overflowMenuOptions: ActionOption[] = [
 const paragraph =
 	'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut lacinia tincidunt vehicula. Vestibulum aliquam in sapien egestas <a href="#">volutpat</a>. Praesent blandit blandit ex, eu ullamcorper mi gravida ut. Praesent a orci libero. Ut et turpis a ipsum ullamcorper convallis ut a leo. Sed malesuada quam ullamcorper nunc <a href="#">venenatis</a>, id sagittis purus malesuada. Pellentesque efficitur rhoncus dolor ut luctus. Ut libero diam, convallis ut neque et, <span class="soft">molestie convallis</span> ligula. Cras feugiat quis odio ut facilisis. Sed non aliquam erat.'
 let demoDomLogIndex = 0
+let clickAnywhereActive = ref<boolean>(false)
 
 /**
  * Hooks
@@ -372,6 +377,16 @@ function demoDomLog() {
 	demoDomLogIndex++
 }
 
+// Demo click anywhere callback
+function demoClickAnywhere() {
+	clickAnywhereActive.value = true
+	mainStore.setOnClickAnywhere(() => {
+		alert('You clicked somewhere')
+		mainStore.unsetOnClickAnywhere()
+		clickAnywhereActive.value = false
+	})
+}
+
 /**
  * Modal methods
  */
@@ -450,9 +465,6 @@ useStickyObserver('#sticky-content')
 		<li><a href="#utility-functions" class="incog">Utility functions</a><br /></li>
 		<li><a href="#custom-directives" class="incog">Custom directives</a><br /></li>
 	</ol>
-
-	<br />
-	<br />
 
 	<!-- #region #title-styles -->
 	<BaseSection___________________________________ title="Text styles" />
@@ -888,6 +900,18 @@ useStickyObserver('#sticky-content')
 
 	<h4 class="title">DOM logger</h4>
 	<cv-button @click="demoDomLog">Log data</cv-button>
+
+	<h4 class="title">Click anywhere callback</h4>
+	<cv-button @click="demoClickAnywhere" :disabled="clickAnywhereActive">{{ clickAnywhereActive ? 'Click anywhere' : 'Activate' }}</cv-button>
+
+	<h4 class="title">Data from mainStore</h4>
+	<ul class="small">
+		<li><b>Screen width:</b> {{ mainStore.screenWidth }}</li>
+		<li><b>Content width:</b> {{ mainStore.contentWidth }}</li>
+		<li><b>Scroll Y:</b> {{ mainStore.scrollY }}</li>
+		<li><b>API offline status:</b> {{ mainStore.apiOffline }}</li>
+		<!-- <li><b>Block routing:</b> {{ mainStore.blockRouting }}</li> -->
+	</ul>
 
 	<!-- #endregion -->
 	<!-- #region #number-display -->

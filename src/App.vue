@@ -1,19 +1,76 @@
 <script setup lang="ts">
+// Vue
+import { computed, onBeforeMount, onMounted, ref } from 'vue'
+
 // Router
 import { useRoute } from 'vue-router'
 const route = useRoute()
 
+// Stores
+import { useMainStore } from '@/stores/MainStore'
+const mainStore = useMainStore()
+
 // Components
 import NavMain from '@/components/NavMain.vue'
 import TheModal from '@/components/TheModal.vue'
+
+// Utils
+import { debounce } from '@/utils/helpers'
+
+// Definitions
+const $mainWrap = ref<HTMLElement | null>(null)
+
+/**
+ * Hooks
+ */
+
+onMounted(() => {
+	storeScreenWidth()
+
+	// Add blur handler
+	document.body.removeEventListener('click', mainStore.onClickAnywhere)
+	document.body.addEventListener('click', (e) => {
+		console.log('click', mainStore.onClickAnywhere)
+		mainStore.onClickAnywhere(e)
+	})
+})
+
+onBeforeMount(() => {
+	// Remove blur handler
+	document.body.removeEventListener('click', mainStore.onClickAnywhere)
+})
+
+/**
+ * Methods
+ */
+
+// Update screen width in the store on resize.
+function storeScreenWidth() {
+	const debouncer = debounce(_resizeHandler, 500)
+	window.addEventListener('resize', debouncer)
+	_resizeHandler()
+
+	function _resizeHandler() {
+		if (!$mainWrap.value) return
+		const padding = parseInt(window.getComputedStyle($mainWrap.value).paddingLeft)
+		const width = $mainWrap.value.clientWidth
+		const contentWidth = width - padding * 2
+		mainStore.setContentWidth(contentWidth)
+		mainStore.setScreenWidth(window.innerWidth)
+	}
+}
 </script>
 
 <!----------------------------------------------------->
 
 <template>
 	<NavMain v-if="!route.meta.hideNav" />
-	<div id="main-wrap" :class="{ 'nav-space': !route.meta.hideNav }">
-		<!-- Usability shortcut - https://carbondesignsystem.com/components/UI-shell-header/accessibility/ -->
+	<div id="main-wrap" ref="$mainWrap" :class="{ 'nav-space': !route.meta.hideNav }">
+		<!--
+		Usability shortcut
+		See: NavMain.vue -> <cv-skip-to-content>
+		See: https://carbondesignsystem.com/components/UI-shell-header/accessibility/
+		-->
 		<a name="main-content"></a>
 
 		<!-- Modal overlay -->

@@ -1,3 +1,4 @@
+import { useMainStore } from '@/stores/MainStore'
 import { createRouter, createWebHistory } from 'vue-router'
 
 const router = createRouter({
@@ -33,5 +34,14 @@ const router = createRouter({
 		},
 	],
 })
+
+// // Conditional redirect (eg. when session expired)
+// router.beforeEach((to, from, next) => {
+// 	if (someCondition) {
+// 		next({ path: '/custom' })
+// 	} else {
+// 		next()
+// 	}
+// })
 
 export default router

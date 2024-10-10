@@ -52,18 +52,19 @@ function onFunc3() {
 <!----------------------------------------------------->
 
 <template>
+	<!-- https://vue.carbondesignsystem.com/?path=/docs/component-ui-select-cvheader--default-story -->
 	<cv-header aria-label="Main navigation">
 		<cv-skip-to-content href="#main-content">Skip to content</cv-skip-to-content>
-		<cv-header-name href="javascript:void(0)" prefix="OpenAD">Vue Template</cv-header-name>
+		<cv-header-name prefix="OpenAD" :to="{ name: 'Home' }">Vue Template</cv-header-name>
 
 		<!-- Menu items -->
 		<cv-header-nav aria-label="Carbon nav">
-			<cv-header-menu-item href="javascript:void(0)">Link 1</cv-header-menu-item>
-			<cv-header-menu-item href="javascript:void(0)">Link 2</cv-header-menu-item>
+			<cv-header-menu-item :to="{ name: 'Home' }">Link 1</cv-header-menu-item>
+			<cv-header-menu-item :to="{ name: 'Home' }">Link 2</cv-header-menu-item>
 			<cv-header-menu aria-label="Link 3" title="Link 3">
-				<cv-header-menu-item href="javascript:void(0)">Submenu Link 1</cv-header-menu-item>
-				<cv-header-menu-item href="javascript:void(0)">Submenu Link 2</cv-header-menu-item>
-				<cv-header-menu-item href="javascript:void(0)">Submenu Link 3</cv-header-menu-item>
+				<cv-header-menu-item :to="{ name: 'Home' }">Submenu Link 1</cv-header-menu-item>
+				<cv-header-menu-item :to="{ name: 'Home' }">Submenu Link 2</cv-header-menu-item>
+				<cv-header-menu-item :to="{ name: 'Home' }">Submenu Link 3</cv-header-menu-item>
 			</cv-header-menu>
 		</cv-header-nav>
 
@@ -118,16 +119,16 @@ function onFunc3() {
 				<hr />
 				<cv-switcher>
 					<cv-switcher-item>
-						<cv-switcher-item-link href="javascript:void(0)" selected>Account settings</cv-switcher-item-link>
+						<cv-switcher-item-link :to="{ name: 'Home' }" selected>Account settings</cv-switcher-item-link>
 					</cv-switcher-item>
 					<cv-switcher-item>
-						<cv-switcher-item-link href="javascript:void(0)">Billing</cv-switcher-item-link>
+						<cv-switcher-item-link :to="{ name: 'Home' }">Billing</cv-switcher-item-link>
 					</cv-switcher-item>
 
 					<hr />
 
 					<cv-switcher-item>
-						<cv-switcher-item-link href="javascript:void(0)">Logout</cv-switcher-item-link>
+						<cv-switcher-item-link :to="{ name: 'Home' }">Logout</cv-switcher-item-link>
 					</cv-switcher-item>
 				</cv-switcher>
 			</cv-header-panel>
@@ -145,6 +146,12 @@ function onFunc3() {
 	border: none;
 }
 
+/// Make top links fit full height
+li.cv-header-menu,
+li.cv-header-menu-item {
+	margin: 0;
+}
+
 /// Stylize focus states
 .bx--skip-to-content:focus {
 	border: none;
@@ -153,6 +160,10 @@ function onFunc3() {
 .cv-header-name:focus {
 	border: none;
 	background: $black;
+}
+.cv-button.bx--btn {
+	// Prevent ugly focus state flash on blur
+	transition: none;
 }
 .cv-button.bx--btn:focus {
 	box-shadow: none;
@@ -211,6 +222,22 @@ a.cv-switcher-item-link.bx--switcher__item-link--selected {
  */
 
 @media (hover: hover) {
+	// Project hover state
+	a.cv-header-name:hover {
+		background: $black;
+	}
+	a.cv-header-name:hover + nav::before {
+		display: none;
+	}
+
+	// Hide underline on hover
+	a.cv-header-name:hover,
+	:deep() a.bx--header__menu-item:hover,
+	:deep() a.cv-switcher-item-link:hover {
+		text-decoration: none;
+	}
+
+	// Side panel hover state
 	a.cv-switcher-item-link:not(.bx--switcher__item-link--selected):hover {
 		color: $white;
 		background: $black-10;
