@@ -1,16 +1,61 @@
 <script setup lang="ts">
 // Vue
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, computed } from 'vue'
+
+// Router
+import { useRoute } from 'vue-router'
+const route = useRoute()
+
+// Type declarations
+import type { ComputedRef } from 'vue'
+type Crumb = {
+	name: string
+	path: string
+}
 
 // Props
 const props = defineProps<{
-	pathArray: string[]
+	crumbs?: Crumb[]
+	omitHome?: boolean
 }>()
 
 // Definitions
 const $breadcrumbs = ref<HTMLElement | null>(null)
 const truncate = ref<boolean>(true) // Lets us toggle truncation
 const needsTruncation = ref<boolean>(false) // Lets us check if the breadcrumbs are truncated
+
+/**
+ * Computed
+ */
+
+// The path to be displayed
+const theCrumbs: ComputedRef<Crumb[]> = computed(() => {
+	const homeCrumb = {
+		name: 'Home',
+		path: '/',
+	}
+	if (props.crumbs) {
+		// Custom crumbs from the props
+		if (props.omitHome) {
+			return props.crumbs
+		} else {
+			return [homeCrumb, ...props.crumbs]
+		}
+	} else {
+		// Automatic crumbs from the route
+		const crumbs = route.matched.map((item) => {
+			return {
+				name: item.name,
+				path: item.path,
+			} as Crumb
+		})
+		if (props.omitHome) {
+			return crumbs
+		} else {
+			return [homeCrumb, ...crumbs]
+		}
+	}
+})
 
 /**
  * Hooks
@@ -23,7 +68,7 @@ onMounted(() => {
 })
 
 /**
- * Definitions
+ * Methods
  */
 
 function toggleTruncate() {
@@ -36,11 +81,10 @@ function toggleTruncate() {
 <template>
 	<div id="breadcrumbs-wrap" :class="{ truncate }">
 		<div id="breadcrumbs" ref="$breadcrumbs" :class="{ truncate, 'needs-truncated': needsTruncation }">
-			<template v-for="(item, i) in props.pathArray" :key="i">
-				<span v-if="i == props.pathArray.length - 1">{{ item }}</span>
-				<router-link v-else-if="i === 0" to="/" class="dumb">{{ item }}</router-link>
-				<router-link v-else :to="'/' + props.pathArray.slice(1, i + 1).join('/')" class="dumb">{{ item }}</router-link>
-				<span v-if="i < props.pathArray.length - 1">&nbsp;&nbsp;&rsaquo;&nbsp;&nbsp;</span>
+			<template v-for="(crumb, i) in theCrumbs" :key="i">
+				<span v-if="i == theCrumbs.length - 1">{{ crumb.name }}</span>
+				<router-link v-else :to="crumb.path" class="dumb">{{ crumb.name }}</router-link>
+				<span v-if="i < theCrumbs.length - 1">&nbsp;&nbsp;&rsaquo;&nbsp;&nbsp;</span>
 			</template>
 			<a v-if="needsTruncation && !truncate" href="#" class="toggle-hide" @click.prevent="toggleTruncate">hide</a>
 		</div>

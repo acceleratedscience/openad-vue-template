@@ -2,10 +2,10 @@
 // Vue
 import { ref, computed } from 'vue'
 
-// // Router
-// import { useRouter, useRoute } from 'vue-router'
-// const router = useRouter()
-// const route = useRoute()
+// Router
+import { useRouter, useRoute } from 'vue-router'
+const router = useRouter()
+const route = useRoute()
 
 // // Stores
 // import { useModalStore } from '@/stores/ModalStore'
@@ -15,7 +15,7 @@ import { ref, computed } from 'vue'
 import type { ComputedRef } from 'vue'
 
 // Components
-// import NavMain from '@/components/NavMain.vue'
+import BaseBreadcrumbs from '@/components/BaseBreadcrumbs.vue'
 
 // Utils
 
@@ -92,7 +92,8 @@ function updateFlavor(customFlavor: string) {
 <!----------------------------------------------------->
 
 <template>
-	<h3>Flavor Picker</h3>
+	<BaseBreadcrumbs />
+	<h1>Flavor Picker</h1>
 
 	<div id="options" ref="$options">
 		<cv-form @submit.prevent="submitFlavor">
@@ -125,6 +126,7 @@ function updateFlavor(customFlavor: string) {
 	flex-direction: row;
 	align-items: flex-end;
 	flex: 1;
+	gap: 0;
 }
 #display {
 	margin-top: 3rem;

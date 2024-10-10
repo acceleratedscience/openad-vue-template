@@ -19,7 +19,9 @@ This a Vue template with some boilerplate code, meant as a quick-start for futur
 -   Simplified and opinionated Carbon-based styles
 -   A ready-to-roll main navigation
 -   A modular API service with response/request interceptors
+-   Flexible modal system
 -   Baked-in responsive behavior
+-   404 Error catching
 -   A number of useful additional components:
     -   Icon compoment supporting dynamic SVG imports
     -   Breadcrumbs

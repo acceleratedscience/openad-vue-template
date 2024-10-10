@@ -1,23 +1,34 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import HomeView from './views/HomeView.vue'
 
 const router = createRouter({
 	history: createWebHistory(import.meta.env.BASE_URL),
 	routes: [
 		{
 			path: '/',
-			name: 'home',
+			name: 'Home',
 			meta: { hideNav: true },
-			component: HomeView,
+			component: () => import('./views/HomeView.vue'),
 		},
 		{
 			path: '/showcase',
-			name: 'showcase',
+			name: 'Showcase',
 			component: () => import('./views/ShowcaseView.vue'),
 		},
 		{
+			path: '/demo',
+			name: 'Demo',
+			redirect: '/demo/flavor-picker',
+			children: [
+				{
+					path: 'flavor-picker',
+					name: 'Flavor picker',
+					component: () => import('./views/DemoView.vue'),
+				},
+			],
+		},
+		{
 			path: '/:catchAll(.*)',
-			name: 'error-404',
+			name: 'Error',
 			component: () => import('./views/ErrorView.vue'),
 		},
 	],

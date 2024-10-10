@@ -53,6 +53,7 @@ import {
 	lockScroll,
 } from '@/utils/helpers'
 import domLog from '@/utils/dom-log'
+import useStickyObserver from '@/utils/sticky-observer'
 
 // Definitions
 const dropdownOptions = [
@@ -200,6 +201,24 @@ const tableData3 = {
 	age: 30,
 	occupation: null,
 }
+const customBreadcrumbs = [
+	{
+		name: 'These',
+		path: 'these',
+	},
+	{
+		name: 'Are',
+		path: 'are',
+	},
+	{
+		name: 'Some',
+		path: 'some',
+	},
+	{
+		name: 'Custom breadcrumbs',
+		path: 'custom-breadcrumbs',
+	},
+]
 const $demoDebounce = ref<HTMLTextAreaElement | null>(null)
 const $demoThrottle = ref<HTMLTextAreaElement | null>(null)
 const debouncer = debounce(resizeHandlerDebounce, 300)
@@ -354,7 +373,7 @@ function demoDomLog() {
 }
 
 /**
- * Modal functions
+ * Modal methods
  */
 
 async function alertPromise() {
@@ -395,6 +414,12 @@ function onOther() {
 	alert('Other button')
 	modalStore.hide()
 }
+
+/**
+ * Logic
+ */
+
+useStickyObserver('#sticky-content')
 </script>
 
 <!----------------------------------------------------->
@@ -402,7 +427,7 @@ function onOther() {
 <template>
 	<ScrollToTop />
 
-	<BaseBreadcrumbs :pathArray="['Home', 'Template showcase']" />
+	<BaseBreadcrumbs />
 
 	<h1>Template Showcase</h1>
 	<i class="sub-header">Overview of styles, components, utility functions and more.</i>
@@ -717,10 +742,16 @@ function onOther() {
 	<!-- #region #various-ui-elements -->
 	<BaseSection___________________________________ title="Various UI elements" />
 
-	<BaseBreadcrumbs :pathArray="['These', 'Are', 'Some', 'Breadcrumbs']" />
+	<!-- Custom breadcrumbs with right side content -->
+	<BaseBreadcrumbs :crumbs="customBreadcrumbs" :omitHome="true">
+		<BaseIcon icon="icn-doc" />
+	</BaseBreadcrumbs>
 
 	<div style="display: flex">
+		<!-- Minimal pagination -->
 		<BasePagination v-model="vmPagination" :total="1000" />
+
+		<!-- Overflow menu -->
 		<OverflowMenu :options="overflowMenuOptions" />
 	</div>
 
@@ -815,6 +846,48 @@ function onOther() {
 	<div style="width: 100%; height: 300px; border: dashed 1px rgba(0, 0, 0, 0.1)">
 		<BaseLoading text="Full page loading" style="height: 100%" />
 	</div>
+
+	<!-- #endregion -->
+	<!-- #region #utility-functions -->
+	<BaseSection___________________________________ title="Utility functions" />
+
+	<h4>Sticky content</h4>
+	<div id="sticky-content"></div>
+
+	<h4 class="title">Query to URL query</h4>
+	<p>
+		Input: <code>{{ someObj }}</code>
+		<br />
+		Output: <i>{{ query2UrlQuery(someObj) }}</i>
+	</p>
+
+	<h4 class="title">Object detection</h4>
+	<p>
+		Input A: <code>{{ someObj }}</code>
+		<br />
+		Input B: <code>[1,2,3,4,5]</code>
+		<br />
+		Output A: <i>{{ isObject(someObj) }}</i>
+		<br />
+		Output B: <i>{{ isObject([1, 2, 3, 4, 5]) }}</i>
+	</p>
+
+	<h4 class="title">Debounce</h4>
+	<textarea ref="$demoDebounce" style="width: 100%; height: 60px; max-height: 60px; min-height: 60px"></textarea>
+
+	<h4 class="title">Throttle</h4>
+	<textarea ref="$demoThrottle" style="width: 100%; height: 60px; max-height: 60px; min-height: 60px"></textarea>
+
+	<h4 class="title">Lock scroll</h4>
+	<p>
+		<cv-button-set>
+			<cv-button v-if="scrollLocked" size="small" @click="demoLockScroll(false)">Unlock scroll</cv-button>
+			<cv-button v-else size="small" kind="danger" @click="demoLockScroll(true)">Lock scroll</cv-button>
+		</cv-button-set>
+	</p>
+
+	<h4 class="title">DOM logger</h4>
+	<cv-button @click="demoDomLog">Log data</cv-button>
 
 	<!-- #endregion -->
 	<!-- #region #number-display -->
@@ -932,45 +1005,6 @@ function onOther() {
 	Output: <i>'{{ slugify('hello world') }}'</i>
 
 	<!-- #endregion -->
-	<!-- #region #utility-functions -->
-	<BaseSection___________________________________ title="Utility functions" />
-
-	<h4 class="title">Query to URL query</h4>
-	<p>
-		Input: <code>{{ someObj }}</code>
-		<br />
-		Output: <i>{{ query2UrlQuery(someObj) }}</i>
-	</p>
-
-	<h4 class="title">Object detection</h4>
-	<p>
-		Input A: <code>{{ someObj }}</code>
-		<br />
-		Input B: <code>[1,2,3,4,5]</code>
-		<br />
-		Output A: <i>{{ isObject(someObj) }}</i>
-		<br />
-		Output B: <i>{{ isObject([1, 2, 3, 4, 5]) }}</i>
-	</p>
-
-	<h4 class="title">Debounce</h4>
-	<textarea ref="$demoDebounce" style="width: 100%; height: 60px; max-height: 60px; min-height: 60px"></textarea>
-
-	<h4 class="title">Throttle</h4>
-	<textarea ref="$demoThrottle" style="width: 100%; height: 60px; max-height: 60px; min-height: 60px"></textarea>
-
-	<h4 class="title">Lock scroll</h4>
-	<p>
-		<cv-button-set>
-			<cv-button v-if="scrollLocked" size="small" @click="demoLockScroll(false)">Unlock scroll</cv-button>
-			<cv-button v-else size="small" kind="danger" @click="demoLockScroll(true)">Lock scroll</cv-button>
-		</cv-button-set>
-	</p>
-
-	<h4 class="title">DOM logger</h4>
-	<cv-button @click="demoDomLog">Log data</cv-button>
-
-	<!-- #endregion -->
 	<!-- #region #custom-directives -->
 	<BaseSection___________________________________ title="Custom directives" />
 
@@ -1023,5 +1057,18 @@ h4.title + p {
 	display: flex;
 	align-items: center;
 	justify-content: center;
+}
+
+#sticky-content {
+	background: $blue;
+	height: 0.125rem;
+	position: sticky;
+	top: 3rem;
+}
+#sticky-content.sticky {
+	background: $error;
+	height: 0.25rem;
+	// margin-left: calc(var(--page-margin) * -1);
+	// margin-right: calc(var(--page-margin) * -1);
 }
 </style>
