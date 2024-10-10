@@ -1,11 +1,14 @@
 <script setup lang="ts">
 // Router
-import { useRouter, useRoute } from 'vue-router'
+import { useRoute } from 'vue-router'
 const route = useRoute()
 
 // Components
 import NavMain from '@/components/NavMain.vue'
+import TheModal from '@/components/TheModal.vue'
 </script>
+
+<!----------------------------------------------------->
 
 <template>
 	<NavMain v-if="!route.meta.hideNav" />
@@ -13,30 +16,15 @@ import NavMain from '@/components/NavMain.vue'
 		<!-- Usability shortcut - https://carbondesignsystem.com/components/UI-shell-header/accessibility/ -->
 		<a name="main-content"></a>
 
+		<!-- Modal overlay -->
+		<TheModal />
+
 		<!-- Router view -->
 		<RouterView />
 	</div>
-	<!-- <h1>Hello</h1>
-	<h2>World</h2>
-	<cv-button>Back</cv-button>
-	<cv-text-input helperText="Same helper text" label="Text input label" placeholder="Sample placeholder"> ZZZZ </cv-text-input> -->
-
-	<!-- <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
-    </nav>
-  <header>
-    <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
-
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-
-      
-    </div>
-  </header>
-
-   -->
 </template>
+
+<!----------------------------------------------------->
 
 <style scoped lang="scss">
 // This is the content wrap that owns the page margin

@@ -100,3 +100,14 @@ form.cv-form .cv-form-group > legend {
 .checkbox-wrap > div.cv-checkbox label {
 	white-space: nowrap;
 }
+
+// Button sets
+// They use box shadow instead of gap, causing weird behavior when stacked in a grid
+.cv-button-set.bx--btn-set .cv-button.bx--btn,
+.cv-button-set.bx--btn-set--stacked .cv-button.bx--btn {
+	--webkit-box-shadow: none;
+	box-shadow: none;
+}
+.cv-button-set {
+	gap: 1px;
+}

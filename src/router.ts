@@ -11,9 +11,14 @@ const router = createRouter({
 			component: HomeView,
 		},
 		{
-			path: '/kitchensink',
-			name: 'kitchensink',
-			component: () => import('./views/KitchenSink.vue'),
+			path: '/showcase',
+			name: 'showcase',
+			component: () => import('./views/ShowcaseView.vue'),
+		},
+		{
+			path: '/:catchAll(.*)',
+			name: 'error-404',
+			component: () => import('./views/ErrorView.vue'),
 		},
 	],
 })

@@ -7,6 +7,10 @@ import { ref, computed } from 'vue'
 // const router = useRouter()
 // const route = useRoute()
 
+// // Stores
+// import { useModalStore } from '@/stores/ModalStore'
+// const modalStore = useModalStore()
+
 // Type declarations
 import type { ComputedRef } from 'vue'
 

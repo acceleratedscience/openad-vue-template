@@ -1,33 +1,3 @@
-<template>
-	<div ref="overflowWrap" class="table-overflow-wrap" :class="{ inline: inline }">
-		<table v-click-to-copy="allowCopy" :data-copy="allowCopy ? copyData : null" :class="{ 'key-val': dataStructure == 'C' }">
-			<thead v-if="header">
-				<tr>
-					<th v-for="(cell, i) in table.header" :key="i">
-						<span :class="{ soft: !cell }">{{ cell || '-' }}</span>
-					</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr v-for="(row, i) in table.body" :key="i">
-					<!-- Title tooltip only shows approximately when text requires truncation -->
-					<td v-for="(cell, j) in row" :key="j" :title="dataStructure == 'C' && String(cell).length ? String(cell) : ''">
-						<a v-if="cell && typeof cell == 'string' && cell.match(/^http(s)?:\/\//)" :href="cell" target="_blank">{{ cell }}</a>
-						<span
-							v-else
-							v-click-to-copy="dataStructure == 'C'"
-							:data-copy="j == 0 ? `${cell}: ${row[1]}` : j == 1 ? cell : null"
-							:class="{ soft: !cell }"
-						>
-							{{ cell || '-' }}
-						</span>
-					</td>
-				</tr>
-			</tbody>
-		</table>
-	</div>
-</template>
-
 <script setup lang="ts">
 // Vue
 import { ref, computed } from 'vue'
@@ -140,7 +110,6 @@ const table: ComputedRef<Table> = computed(() => {
 // Data structure D:
 // TBD (wil be extended as needed)
 function restructureData(data: any, struct: DataStructure): any[] {
-	console.log(struct, data)
 	if (!data) {
 		console.error('restructureData() - No data provided')
 		return []
@@ -157,7 +126,6 @@ function restructureData(data: any, struct: DataStructure): any[] {
 		for (const rowIndex in data) {
 			const rowData = data[rowIndex]
 			table[i] = []
-			console.log(77, rowData)
 			for (const key in rowData) {
 				table[i].push(rowData[key])
 			}
@@ -169,10 +137,8 @@ function restructureData(data: any, struct: DataStructure): any[] {
 			const rowData = data[rowIndex]
 			if (i === 0) table[0] = []
 			table[i + 1] = []
-			console.log(88, rowData)
 			for (const key in rowData) {
 				if (i === 0) {
-					// console.log('-->', Array.isArray(rowData), struct, '#', key)
 					table[i].push(key)
 				}
 				table[i + 1].push(rowData[key])
@@ -189,8 +155,6 @@ function restructureData(data: any, struct: DataStructure): any[] {
 	} else if (struct == 'D') {
 		// Future other data structured go here.
 	}
-	console.log(table)
-	console.log('---\n\n\n')
 	return table
 }
 
@@ -213,6 +177,40 @@ function restructureData(data: any, struct: DataStructure): any[] {
 // }
 </script>
 
+<!----------------------------------------------------->
+
+<template>
+	<div ref="overflowWrap" class="table-overflow-wrap" :class="{ inline: inline }">
+		<table v-click-to-copy="allowCopy" :data-copy="allowCopy ? copyData : null" :class="{ 'key-val': dataStructure == 'C' }">
+			<thead v-if="header">
+				<tr>
+					<th v-for="(cell, i) in table.header" :key="i">
+						<span :class="{ soft: !cell }">{{ cell || '-' }}</span>
+					</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr v-for="(row, i) in table.body" :key="i">
+					<!-- Title tooltip only shows approximately when text requires truncation -->
+					<td v-for="(cell, j) in row" :key="j" :title="dataStructure == 'C' && String(cell).length ? String(cell) : ''">
+						<a v-if="cell && typeof cell == 'string' && cell.match(/^http(s)?:\/\//)" :href="cell" target="_blank">{{ cell }}</a>
+						<span
+							v-else
+							v-click-to-copy="dataStructure == 'C'"
+							:data-copy="j == 0 ? `${cell}: ${row[1]}` : j == 1 ? cell : null"
+							:class="{ soft: !cell }"
+						>
+							{{ cell || '-' }}
+						</span>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</template>
+
+<!----------------------------------------------------->
+
 <style lang="scss" scoped>
 .table-overflow-wrap {
 	overflow-x: auto;
@@ -228,6 +226,9 @@ function restructureData(data: any, struct: DataStructure): any[] {
 	padding-left: var(--page-margin);
 	margin-right: calc(var(--page-margin) * -1);
 	padding-right: var(--page-margin);
+}
+.table-overflow-wrap.inline {
+	display: inline-block;
 }
 table {
 	border-collapse: collapse;

@@ -47,7 +47,7 @@ watch(
 			const selectedOption = props.options.find((option) => option.val === newVal)
 			if (selectedOption) {
 				const action = selectedOption.action
-				action()
+				if (action) action()
 			}
 		}
 

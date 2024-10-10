@@ -7,6 +7,10 @@ import { ref, computed, onMounted, onBeforeUnmount } from 'vue'
 // const router = useRouter()
 // const route = useRoute()
 
+// Stores
+import { useModalStore } from '@/stores/ModalStore'
+const modalStore = useModalStore()
+
 // Type declarations
 import type { ComputedRef } from 'vue'
 import type { ActionOption } from '@/components/OverflowMenu.vue'
@@ -49,6 +53,7 @@ import {
 	throttle,
 	lockScroll,
 } from '@/utils/helpers'
+import domLog from '@/utils/dom-log'
 
 // Definitions
 const dropdownOptions = [
@@ -235,6 +240,7 @@ const overflowMenuOptions: ActionOption[] = [
 ]
 const paragraph =
 	'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut lacinia tincidunt vehicula. Vestibulum aliquam in sapien egestas <a href="#">volutpat</a>. Praesent blandit blandit ex, eu ullamcorper mi gravida ut. Praesent a orci libero. Ut et turpis a ipsum ullamcorper convallis ut a leo. Sed malesuada quam ullamcorper nunc <a href="#">venenatis</a>, id sagittis purus malesuada. Pellentesque efficitur rhoncus dolor ut luctus. Ut libero diam, convallis ut neque et, <span class="soft">molestie convallis</span> ligula. Cras feugiat quis odio ut facilisis. Sed non aliquam erat.'
+let demoDomLogIndex = 0
 
 /**
  * Hooks
@@ -333,13 +339,74 @@ function toggleClickToCopyActive() {
 	clickToCopyActive.value = !clickToCopyActive.value
 	return false
 }
+
+// DOM logging
+function demoDomLog() {
+	const err = new Error('This is an error message')
+	const data = [
+		"This is a logger for mobile and Jupyter iframe debugging, when we don't have easy access to the console. Keep on clicking the button to see different DOM logs.",
+		{ foo: 'Foo', bar: 'Bar', baz: 123 },
+		[1, 2, 3, 4, 5],
+		null,
+		err,
+	]
+	domLog(data[demoDomLogIndex])
+	demoDomLogIndex++
+}
+
+/**
+ * Modal functions
+ */
+
+async function alertPromise() {
+	console.log(22, modalStore)
+	const result = await modalStore.alert('Hello world', {
+		title: 'I block the thread',
+		secondaryBtn: true,
+		onSubmit,
+		onCancel,
+	})
+
+	if (result) {
+		console.log('Continue after SUBMIT')
+	} else {
+		console.log('Continue after CANCEL')
+	}
+}
+
+async function confirmPromise() {
+	const result = await modalStore.confirm('Are you sure?', { onSubmit, onCancel })
+
+	if (result) {
+		console.log('Continue after SUBMIT')
+	} else {
+		console.log('Continue after CANCEL')
+	}
+}
+
+function onSubmit() {
+	alert('yes')
+	modalStore.hide()
+}
+function onCancel() {
+	alert('no')
+	modalStore.hide()
+}
+function onOther() {
+	alert('Other button')
+	modalStore.hide()
+}
 </script>
 
 <!----------------------------------------------------->
 
 <template>
 	<ScrollToTop />
-	<BaseBreadcrumbs :pathArray="['Foo', 'Bar', 'Baz', 'Hello']" />
+
+	<BaseBreadcrumbs :pathArray="['Home', 'Template showcase']" />
+
+	<h1>Template Showcase</h1>
+	<i class="sub-header">Overview of styles, components, utility functions and more.</i>
 
 	<BaseSection___________________________________ title="Text styles" />
 
@@ -371,11 +438,13 @@ function toggleClickToCopyActive() {
 
 	<BaseSection___________________________________ title="Table data" />
 
-	<TableData :data="tableData1" :allowCopy="false" />
+	<TableData :data="tableData1" :allowCopy="true" :inline="true" :header="false" />
+	<br /><br />
+	<TableData :data="tableData1" :allowCopy="true" />
 	<br />
 	<TableData :data="tableData2" :allowCopy="false" />
 	<br />
-	<TableData :data="tableData3" :allowCopy="false" />
+	<TableData :data="tableData3" />
 
 	<BaseSection___________________________________ title="Collapsable sections" />
 
@@ -582,7 +651,41 @@ function toggleClickToCopyActive() {
 		</cv-button-set>
 	</cv-form>
 
+	<BaseSection___________________________________ title="Modals" />
+
+	<cv-button-set :stacked="true">
+		<cv-button-set>
+			<cv-button kind="secondary" @click="modalStore.alert('Hello world')">Simple alert</cv-button>
+			<cv-button
+				kind="secondary"
+				@click="
+					modalStore.alert('Hello <span style=\'color: red\'>world</span>', {
+						html: true,
+						size: 'md',
+						primaryBtn: 'One',
+						secondaryBtn: 'Two',
+						otherBtn: 'Three',
+						title: 'Here\'s a title',
+						onSubmit,
+						onCancel,
+						onOther,
+					})
+				"
+			>
+				Advanced alert
+			</cv-button>
+			<cv-button kind="secondary" @click="alertPromise">Alert promise</cv-button>
+		</cv-button-set>
+		<cv-button-set>
+			<cv-button kind="secondary" @click="confirmPromise">Confirm promise</cv-button>
+			<cv-button kind="secondary" @click="modalStore.confirm('Are you sure?', { onSubmit, onCancel })">Confirm modal</cv-button>
+			<cv-button kind="secondary" @click="modalStore.display('ModalExample')">Custom template</cv-button>
+		</cv-button-set>
+	</cv-button-set>
+
 	<BaseSection___________________________________ title="Various UI elements" />
+
+	<BaseBreadcrumbs :pathArray="['These', 'Are', 'Some', 'Breadcrumbs']" />
 
 	<div style="display: flex">
 		<BasePagination v-model="vmPagination" :total="1000" />
@@ -792,6 +895,7 @@ function toggleClickToCopyActive() {
 		<br />
 		Output: <i>{{ query2UrlQuery(someObj) }}</i>
 	</p>
+
 	<h4 class="title">Object detection</h4>
 	<p>
 		Input A: <code>{{ someObj }}</code>
@@ -802,10 +906,13 @@ function toggleClickToCopyActive() {
 		<br />
 		Output B: <i>{{ isObject([1, 2, 3, 4, 5]) }}</i>
 	</p>
+
 	<h4 class="title">Debounce</h4>
 	<textarea ref="$demoDebounce" style="width: 100%; height: 60px; max-height: 60px; min-height: 60px"></textarea>
+
 	<h4 class="title">Throttle</h4>
 	<textarea ref="$demoThrottle" style="width: 100%; height: 60px; max-height: 60px; min-height: 60px"></textarea>
+
 	<h4 class="title">Lock scroll</h4>
 	<p>
 		<cv-button-set>
@@ -813,6 +920,9 @@ function toggleClickToCopyActive() {
 			<cv-button v-else size="small" kind="danger" @click="demoLockScroll(true)">Lock scroll</cv-button>
 		</cv-button-set>
 	</p>
+
+	<h4 class="title">DOM logger</h4>
+	<cv-button @click="demoDomLog">Log data</cv-button>
 
 	<BaseSection___________________________________ title="Custom directives" />
 

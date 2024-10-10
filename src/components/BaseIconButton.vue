@@ -1,40 +1,3 @@
-<template>
-	<div
-		class="icn-btn"
-		:class="{
-			[props.icon]: true,
-
-			// Size
-			mini: props.mini,
-
-			// Button styles
-			default: props.btnStyle == 'default',
-			soft: props.btnStyle == 'soft',
-			carbon: props.btnStyle == 'carbon',
-
-			// Toggle type
-			toggle: props.toggle,
-			'toggle-on': toggleState,
-
-			// Selection state
-			sel: props.sel,
-
-			// Custom colors
-			'has-hover-icn': props.iconHover,
-			'has-sel-icn': props.iconSel,
-			'has-custom-color': !!props.color,
-			'has-custom-hover-color': !!props.colorHover,
-			'has-custom-toggle-color': !!props.colorToggle,
-		}"
-		@click="onClick"
-		:style="styleParam"
-	>
-		<BaseIcon class="base-icn" :icon="props.icon" :size="iconSize" />
-		<BaseIcon v-if="props.iconHover" class="hover-icn" :icon="props.iconHover" :size="iconSize" />
-		<BaseIcon v-if="props.iconSel" class="sel-icn" :icon="props.iconSel" :size="iconSize" />
-	</div>
-</template>
-
 <script setup lang="ts">
 // Vue
 import { ref, computed } from 'vue'
@@ -56,7 +19,7 @@ const props = withDefaults(
 		icon: string
 		iconHover?: string
 		iconSel?: string
-		btnStyle?: 'default' | 'soft' | 'carbon' // See /kitchen-sink for examples
+		btnStyle?: 'default' | 'soft' | 'carbon' // See /showcase for examples
 		toggle?: boolean
 		color?: string
 		colorHover?: string
@@ -116,6 +79,47 @@ function onClick() {
 	}
 }
 </script>
+
+<!----------------------------------------------------->
+
+<template>
+	<div
+		class="icn-btn"
+		:class="{
+			[props.icon]: true,
+
+			// Size
+			mini: props.mini,
+
+			// Button styles
+			default: props.btnStyle == 'default',
+			soft: props.btnStyle == 'soft',
+			carbon: props.btnStyle == 'carbon',
+
+			// Toggle type
+			toggle: props.toggle,
+			'toggle-on': toggleState,
+
+			// Selection state
+			sel: props.sel,
+
+			// Custom colors
+			'has-hover-icn': props.iconHover,
+			'has-sel-icn': props.iconSel,
+			'has-custom-color': !!props.color,
+			'has-custom-hover-color': !!props.colorHover,
+			'has-custom-toggle-color': !!props.colorToggle,
+		}"
+		@click="onClick"
+		:style="styleParam"
+	>
+		<BaseIcon class="base-icn" :icon="props.icon" :size="iconSize" />
+		<BaseIcon v-if="props.iconHover" class="hover-icn" :icon="props.iconHover" :size="iconSize" />
+		<BaseIcon v-if="props.iconSel" class="sel-icn" :icon="props.iconSel" :size="iconSize" />
+	</div>
+</template>
+
+<!----------------------------------------------------->
 
 <style lang="scss" scoped>
 .icn-btn {

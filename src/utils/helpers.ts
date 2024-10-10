@@ -1,5 +1,5 @@
 /**
- * This file holds a varietry pack of general helper functions.
+ * Varietry pack of general helper functions.
  */
 
 // Type declarations
@@ -232,7 +232,6 @@ export function lockScroll(state: boolean) {
 
 // Scroll to an anchor after page is loaded
 export function jumpToAnchor(anchorLink: string) {
-	console.log('jumpToAnchor', anchorLink)
 	if (window.location.hash == `#${anchorLink}`) {
 		const el = document.getElementsByName(anchorLink)[0]
 		if (el) {
