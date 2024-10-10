@@ -233,12 +233,7 @@ export function lockScroll(state: boolean) {
 // Scroll to an anchor after page is loaded
 export function jumpToAnchor(anchorLink: string) {
 	if (window.location.hash == `#${anchorLink}`) {
-		const el = document.getElementsByName(anchorLink)[0]
-		if (el) {
-			const rect = el.getBoundingClientRect()
-			window.scrollTo({
-				top: rect.top - 20,
-			})
-		}
+		const el = document.getElementById(anchorLink)
+		if (el) el.scrollIntoView()
 	}
 }

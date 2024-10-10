@@ -46,7 +46,7 @@ onMounted(() => jumpToAnchor(anchorLink.value))
 	<details>
 		<summary>
 			<h4>
-				<slot name="title"></slot><a v-if="anchor" :href="`#${anchorLink}`" :name="anchorLink" v-click-to-copy :data-copy="windowHref">#</a>
+				<slot name="title"></slot><a v-if="anchor" :href="`#${anchorLink}`" :id="anchorLink" v-click-to-copy :data-copy="windowHref">#</a>
 			</h4>
 		</summary>
 		<div>

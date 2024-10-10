@@ -46,7 +46,8 @@ onMounted(() => jumpToAnchor(anchorLink.value))
 
 <template>
 	<hr />
-	<h5 :name="anchorLink">
+	<a :id="anchorLink" style="position: relative; display: block; top: -7rem"></a>
+	<h5>
 		<a :href="`#${anchorLink}`" class="anchor" v-click-to-copy :data-copy="windowHref">{{ title }}</a>
 	</h5>
 </template>

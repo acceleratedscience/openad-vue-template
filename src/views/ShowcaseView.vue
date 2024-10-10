@@ -1,6 +1,6 @@
 <script setup lang="ts">
 // Vue
-import { ref, computed, onMounted, onBeforeUnmount } from 'vue'
+import { ref, onMounted, onBeforeUnmount } from 'vue'
 
 // // Router
 // import { useRouter, useRoute } from 'vue-router'
@@ -12,7 +12,6 @@ import { useModalStore } from '@/stores/ModalStore'
 const modalStore = useModalStore()
 
 // Type declarations
-import type { ComputedRef } from 'vue'
 import type { ActionOption } from '@/components/OverflowMenu.vue'
 type MultiSelectOption = {
 	name: string
@@ -408,6 +407,29 @@ function onOther() {
 	<h1>Template Showcase</h1>
 	<i class="sub-header">Overview of styles, components, utility functions and more.</i>
 
+	<br /><br /><br />
+	<h3>Table of contents</h3>
+	<ol>
+		<li><a href="#text-styles" class="incog">Text styles</a><br /></li>
+		<li><a href="#table-data" class="incog">Table data</a><br /></li>
+		<li><a href="#collapsable-sections" class="incog">Collapsable sections</a><br /></li>
+		<li><a href="#form-elements" class="incog">Form elements</a><br /></li>
+		<li><a href="#modals" class="incog">Modals</a><br /></li>
+		<li><a href="#various-ui-elements" class="incog">Various UI elements</a><br /></li>
+		<li><a href="#icons" class="incog">Icons</a><br /></li>
+		<li><a href="#icon-buttons" class="incog">Icon buttons</a><br /></li>
+		<li><a href="#animations" class="incog">Animations</a><br /></li>
+		<li><a href="#loaders" class="incog">Loaders</a><br /></li>
+		<li><a href="#number-display" class="incog">Number display</a><br /></li>
+		<li><a href="#string-manipulations" class="incog">String manipulations</a><br /></li>
+		<li><a href="#utility-functions" class="incog">Utility functions</a><br /></li>
+		<li><a href="#custom-directives" class="incog">Custom directives</a><br /></li>
+	</ol>
+
+	<br />
+	<br />
+
+	<!-- #region #title-styles -->
 	<BaseSection___________________________________ title="Text styles" />
 
 	<h1>Header 1</h1>
@@ -436,6 +458,8 @@ function onOther() {
 	<h4 class="title">Header + paragraph</h4>
 	<p v-html="paragraph"></p>
 
+	<!-- #endregion -->
+	<!-- #region #table-data -->
 	<BaseSection___________________________________ title="Table data" />
 
 	<TableData :data="tableData1" :allowCopy="true" :inline="true" :header="false" />
@@ -446,6 +470,8 @@ function onOther() {
 	<br />
 	<TableData :data="tableData3" />
 
+	<!-- #endregion -->
+	<!-- #region #collapsible-sections -->
 	<BaseSection___________________________________ title="Collapsable sections" />
 
 	<ExpandableSection>
@@ -463,6 +489,8 @@ function onOther() {
 		<template #content><span v-html="paragraph"></span></template>
 	</ExpandableSection>
 
+	<!-- #endregion -->
+	<!-- #region #form-elements -->
 	<BaseSection___________________________________ title="Form elements" />
 
 	<!-- https://vue.carbondesignsystem.com -->
@@ -651,6 +679,8 @@ function onOther() {
 		</cv-button-set>
 	</cv-form>
 
+	<!-- #endregion -->
+	<!-- #region #modals -->
 	<BaseSection___________________________________ title="Modals" />
 
 	<cv-button-set :stacked="true">
@@ -683,6 +713,8 @@ function onOther() {
 		</cv-button-set>
 	</cv-button-set>
 
+	<!-- #endregion -->
+	<!-- #region #various-ui-elements -->
 	<BaseSection___________________________________ title="Various UI elements" />
 
 	<BaseBreadcrumbs :pathArray="['These', 'Are', 'Some', 'Breadcrumbs']" />
@@ -692,6 +724,8 @@ function onOther() {
 		<OverflowMenu :options="overflowMenuOptions" />
 	</div>
 
+	<!-- #endregion -->
+	<!-- #region #icons -->
 	<BaseSection___________________________________ title="Icons" />
 
 	<p>Large icons</p>
@@ -725,6 +759,8 @@ function onOther() {
 		<li>Add <code>fill="currentColor"</code> as a parameter to the <i>&lt;svg&gt;</i> element</li>
 	</ol>
 
+	<!-- #endregion -->
+	<!-- #region #icon-buttons -->
 	<BaseSection___________________________________ title="Icon buttons" />
 
 	<div class="icons-wrap">
@@ -760,6 +796,8 @@ function onOther() {
 		</div>
 	</div>
 
+	<!-- #endregion -->
+	<!-- #region #animations -->
 	<BaseSection___________________________________ title="Animations" />
 
 	<BaseIcon icon="icn-star" style="animation: rotate 10s linear infinite" />
@@ -768,6 +806,8 @@ function onOther() {
 	&nbsp;&nbsp;
 	<BaseIcon icon="icn-folder-full" size="large" style="animation: shake-large 500ms linear infinite" />
 
+	<!-- #endregion -->
+	<!-- #region #loaders -->
 	<BaseSection___________________________________ title="Loaders" />
 
 	<BaseFetching text="Inline element loading" />
@@ -776,6 +816,8 @@ function onOther() {
 		<BaseLoading text="Full page loading" style="height: 100%" />
 	</div>
 
+	<!-- #endregion -->
+	<!-- #region #number-display -->
 	<BaseSection___________________________________ title="Number display" />
 
 	<h4 class="title">Time ago</h4>
@@ -877,7 +919,9 @@ function onOther() {
 		<li>{{ largeNr(1000000000000) }}</li>
 	</ol>
 
-	<BaseSection___________________________________ title="String maniuplations" />
+	<!-- #endregion -->
+	<!-- #region #string-manipulations -->
+	<BaseSection___________________________________ title="String manipulations" />
 
 	<h4 class="title">Capitalize</h4>
 	Input: 'hello world'<br />
@@ -887,6 +931,8 @@ function onOther() {
 	Input: 'Hello world'<br />
 	Output: <i>'{{ slugify('hello world') }}'</i>
 
+	<!-- #endregion -->
+	<!-- #region #utility-functions -->
 	<BaseSection___________________________________ title="Utility functions" />
 
 	<h4 class="title">Query to URL query</h4>
@@ -924,6 +970,8 @@ function onOther() {
 	<h4 class="title">DOM logger</h4>
 	<cv-button @click="demoDomLog">Log data</cv-button>
 
+	<!-- #endregion -->
+	<!-- #region #custom-directives -->
 	<BaseSection___________________________________ title="Custom directives" />
 
 	<h4 class="title">v-click-to-copy</h4>
@@ -934,6 +982,8 @@ function onOther() {
 	>
 	(a) [<a href="#" @click.prevent="toggleClickToCopyActive">{{ clickToCopyActive ? 'deactivate' : 'activate' }}</a
 	>]
+
+	<!-- #endregion -->
 </template>
 
 <!----------------------------------------------------->
