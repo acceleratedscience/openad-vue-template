@@ -1,51 +1,52 @@
 <script setup lang="ts">
-// Vue
-// import { ref, computed } from 'vue'
-
-// // Router
-// import { useRouter, useRoute } from 'vue-router'
-// const router = useRouter()
-// const route = useRoute()
+// Router
+import { useRoute } from 'vue-router'
+const route = useRoute()
 
 // Type declarations
-// import type { ComputedRef } from 'vue'
+type _HomeLink = {
+	prefix: string
+	name: string
+	routeName: string
+}
+type _NavItem = {
+	name: string
+	routeName: string
+}
+type _NavItemList = {
+	name: string
+	items: _NavItem[]
+}
+type _SidePanel = {
+	icon: string
+	title: string
+	name: string
+	items: (_NavItem | { sep: boolean })[]
+	tipPosition?: 'left' | 'right' | 'top' | 'bottom'
+	tipAlignment?: 'start' | 'center' | 'end'
+	fn?: () => void
+}
+export type NavMainTree = {
+	homeLink: _HomeLink
+	items: (_NavItem | _NavItemList)[]
+	sidePanels: _SidePanel[]
+}
 
 // Components
 import BaseIcon from '@/components/BaseIcon.vue'
 
-// Utils
-
-// Definitions
-
 // Props
-// const props = withDefaults(
-// 	defineProps<{
-// 		foo: number
-// 	}>(),
-// 	{
-// 		foo: 1,
-// 	},
-// )
-
-/**
- * Computed properties
- */
+const props = defineProps<{
+	tree: NavMainTree
+}>()
+const { homeLink, items, sidePanels } = props.tree
 
 /**
  * Methods
  */
 
-function onPanelResize() {
-	console.log('Panel resized')
-}
-function onFunc1() {
-	console.log('Function 1')
-}
-function onFunc2() {
-	console.log('Function 1')
-}
-function onFunc3() {
-	console.log('Function 1')
+function blurFocus() {
+	;(document.activeElement as HTMLAnchorElement)?.blur()
 }
 </script>
 
@@ -54,82 +55,58 @@ function onFunc3() {
 <template>
 	<!-- https://vue.carbondesignsystem.com/?path=/docs/component-ui-select-cvheader--default-story -->
 	<cv-header aria-label="Main navigation">
+		<!-- Accessibility skip link (first tab) -->
 		<cv-skip-to-content href="#main-content">Skip to content</cv-skip-to-content>
-		<cv-header-name prefix="OpenAD" :to="{ name: 'Home' }">Vue Template</cv-header-name>
+
+		<!-- Project title -->
+		<cv-header-name :prefix="homeLink.prefix" :to="{ name: homeLink.routeName }">{{ homeLink.name }}</cv-header-name>
 
 		<!-- Menu items -->
-		<cv-header-nav aria-label="Carbon nav">
-			<cv-header-menu-item :to="{ name: 'Home' }">Link 1</cv-header-menu-item>
-			<cv-header-menu-item :to="{ name: 'Home' }">Link 2</cv-header-menu-item>
-			<cv-header-menu aria-label="Link 3" title="Link 3">
-				<cv-header-menu-item :to="{ name: 'Home' }">Submenu Link 1</cv-header-menu-item>
-				<cv-header-menu-item :to="{ name: 'Home' }">Submenu Link 2</cv-header-menu-item>
-				<cv-header-menu-item :to="{ name: 'Home' }">Submenu Link 3</cv-header-menu-item>
-			</cv-header-menu>
+		<cv-header-nav v-if="items.length" aria-label="Main navigation links">
+			<template v-for="(item, i) in items" :key="i">
+				<cv-header-menu v-if="'items' in item" :title="item.name">
+					<cv-header-menu-item v-for="(subItem, j) in item.items" :key="j" :to="{ name: subItem.routeName }">{{
+						subItem.name
+					}}</cv-header-menu-item>
+				</cv-header-menu>
+				<cv-header-menu-item v-else :to="{ name: item.routeName }">{{ item.name }}</cv-header-menu-item>
+			</template>
 		</cv-header-nav>
 
-		<!-- Global function icons -->
+		<!-- Side panel icons -->
 		<template v-slot:header-global>
 			<cv-header-global-action
-				aria-label="Notifications"
-				aria-controls="panel-1"
-				@click="onFunc1"
-				label="Function 1"
-				tipPosition="bottom"
-				tipAlignment="start"
+				v-for="(panel, i) in sidePanels"
+				:key="i"
+				:label="panel.title"
+				:aria-label="'Panel: ' + panel.title"
+				:aria-controls="'panel-' + panel.name"
+				:tipPosition="panel.tipPosition || 'bottom'"
+				:tipAlignment="panel.tipAlignment || 'end'"
+				@click="panel.fn?.()"
 			>
-				<BaseIcon icon="icn-bookmark" />
-			</cv-header-global-action>
-			<cv-header-global-action
-				aria-label="User avatar"
-				@click="onFunc2"
-				aria-controls="panel-2"
-				label="Function 2"
-				tipPosition="bottom"
-				tipAlignment="center"
-			>
-				<BaseIcon icon="icn-terminal" />
-			</cv-header-global-action>
-			<cv-header-global-action
-				aria-label="Account section"
-				aria-controls="account-panel"
-				@click="onFunc3"
-				label="Account"
-				tipPosition="bottom"
-				tipAlignment="end"
-			>
-				<BaseIcon icon="icn-user" />
+				<BaseIcon :icon="panel.icon" />
 			</cv-header-global-action>
 		</template>
 
-		<!-- Right user panel -->
-		<template v-slot:right-panels>
-			<cv-header-panel id="panel-2" @panel-resize="onPanelResize">
-				<div class="title large">Title</div>
-				<hr />
-			</cv-header-panel>
-
-			<cv-header-panel id="panel-1" @panel-resize="onPanelResize">
-				<div class="title large">Title</div>
-				<hr />
-			</cv-header-panel>
-
-			<cv-header-panel id="account-panel" @panel-resize="onPanelResize">
-				<div class="title large">Account</div>
+		<!-- Side panels -->
+		<template v-if="sidePanels.length" v-slot:right-panels>
+			<cv-header-panel v-for="(panel, i) in sidePanels" :key="i" :id="`panel-${panel.name}`">
+				<!-- Panel title -->
+				<div class="title large">{{ panel.title }}</div>
 				<hr />
 				<cv-switcher>
-					<cv-switcher-item>
-						<cv-switcher-item-link :to="{ name: 'Home' }" selected>Account settings</cv-switcher-item-link>
-					</cv-switcher-item>
-					<cv-switcher-item>
-						<cv-switcher-item-link :to="{ name: 'Home' }">Billing</cv-switcher-item-link>
-					</cv-switcher-item>
+					<template v-for="(item, j) in panel.items" :key="j">
+						<!-- Separator -->
+						<hr v-if="'sep' in item" />
 
-					<hr />
-
-					<cv-switcher-item>
-						<cv-switcher-item-link :to="{ name: 'Home' }">Logout</cv-switcher-item-link>
-					</cv-switcher-item>
+						<!-- Link -->
+						<cv-switcher-item v-else>
+							<cv-switcher-item-link :to="{ name: item.routeName }" :selected="route.name == item.name" @click="blurFocus">{{
+								item.name
+							}}</cv-switcher-item-link>
+						</cv-switcher-item>
+					</template>
 				</cv-switcher>
 			</cv-header-panel>
 		</template>
@@ -150,6 +127,57 @@ function onFunc3() {
 li.cv-header-menu,
 li.cv-header-menu-item {
 	margin: 0;
+}
+
+// Make side panel links fit full width
+.cv-header-panel.bx--header-panel--expanded {
+	border: none;
+}
+
+/// Ignore visited link styling
+// Project title
+a.cv-header-name.router-link-exact-active {
+	text-decoration: none;
+	color: white;
+}
+
+// Main links
+:deep() .cv-header-menu-item > a.router-link-exact-active {
+	text-decoration: none;
+	color: $white;
+	position: relative;
+	font-weight: 600;
+}
+:deep() .cv-header-menu-item > a.router-link-exact-active::after {
+	content: '';
+	display: block;
+	width: 100%;
+	height: 0.25rem;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	background: $blue-light;
+}
+:deep() ul ul .cv-header-menu-item > a.router-link-exact-active::after {
+	// background: red;
+	width: 0.25rem;
+	height: 100%;
+}
+
+// Side panel links
+a.cv-switcher-item-link.router-link-exact-active {
+	text-decoration: none;
+	position: relative;
+}
+a.cv-switcher-item-link.router-link-exact-active::after {
+	content: '';
+	display: block;
+	height: 100%;
+	width: 0.25rem;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	background: $blue-light;
 }
 
 /// Stylize focus states

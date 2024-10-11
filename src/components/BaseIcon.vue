@@ -28,10 +28,11 @@ const widthHeightPx: ComputedRef<string> = computed(() => {
 	return `${widthHeight.value}px`
 })
 
+const filename: ComputedRef<string> = computed(() => props.icon.replace(/\.svg$/, ''))
+
 // Load component
 onMounted(async () => {
-	const filename = props.icon.replace(/\.svg$/, '')
-	const { default: svgComp } = await import(`@/assets/icons/${filename}.svg?component`) // Possible thanks to vite-svg-loader
+	const { default: svgComp } = await import(`@/assets/icons/${filename.value}.svg?component`) // Possible thanks to vite-svg-loader
 	SvgComponent.value = svgComp
 })
 </script>
@@ -39,7 +40,7 @@ onMounted(async () => {
 <!----------------------------------------------------->
 
 <template>
-	<SvgComponent v-if="SvgComponent" class="svg" :style="{ '--svg-dims': widthHeightPx }" />
+	<SvgComponent v-if="SvgComponent" :class="`svg-icn svg-${filename}`" :style="{ '--svg-dims': widthHeightPx }" />
 	<svg
 		v-else
 		:width="widthHeight"
@@ -55,7 +56,7 @@ onMounted(async () => {
 <!----------------------------------------------------->
 
 <style scoped lang="scss">
-.svg {
+.svg-icn {
 	width: var(--svg-dims);
 	height: var(--svg-dims);
 }

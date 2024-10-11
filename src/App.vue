@@ -10,6 +10,9 @@ const route = useRoute()
 import { useMainStore } from '@/stores/MainStore'
 const mainStore = useMainStore()
 
+// Type declarations
+import type { NavMainTree } from '@/components/NavMain.vue'
+
 // Components
 import NavMain from '@/components/NavMain.vue'
 import TheModal from '@/components/TheModal.vue'
@@ -19,6 +22,101 @@ import { debounce } from '@/utils/helpers'
 
 // Definitions
 const $mainWrap = ref<HTMLElement | null>(null)
+const mainNavTree: NavMainTree = {
+	homeLink: {
+		prefix: 'OpenAD',
+		name: 'Vue Template',
+		routeName: 'Home',
+	},
+	items: [
+		{
+			name: 'Fruits',
+			routeName: 'Demo',
+		},
+		{
+			name: 'Vegetables',
+			routeName: 'Demo',
+		},
+		{
+			name: 'Spices',
+			items: [
+				{
+					name: 'Basil',
+					routeName: 'Demo',
+				},
+				{
+					name: 'Oregano',
+					routeName: 'Demo',
+				},
+				{
+					name: 'Coriander',
+					routeName: 'Demo',
+				},
+			],
+		},
+	],
+	sidePanels: [
+		{
+			icon: 'icn-bookmark',
+			title: 'Favorites',
+			name: 'favorites',
+			items: [
+				{
+					name: 'Fruits',
+					routeName: 'Demo',
+				},
+				{
+					name: 'Vegetables',
+					routeName: 'Demo',
+				},
+				{
+					name: 'Spices',
+					routeName: 'Demo',
+				},
+			],
+		},
+		{
+			icon: 'icn-education',
+			title: 'Education',
+			name: 'model-finetuning',
+			items: [
+				{
+					name: 'Recipes',
+					routeName: 'Demo',
+				},
+				{
+					name: 'Grow your own',
+					routeName: 'Demo',
+				},
+			],
+		},
+		{
+			icon: 'icn-user',
+			title: 'Account',
+			name: 'account',
+			items: [
+				{
+					name: 'Account settings',
+					routeName: 'Demo',
+				},
+				{
+					name: 'Billing',
+					routeName: 'Demo',
+				},
+				{
+					sep: true,
+				},
+				{
+					name: 'Logout',
+					routeName: 'Demo',
+				},
+			],
+			fn: () => {
+				console.log('Account clicked')
+			},
+		},
+	],
+}
 
 /**
  * Hooks
@@ -64,7 +162,7 @@ function storeScreenWidth() {
 <!----------------------------------------------------->
 
 <template>
-	<NavMain v-if="!route.meta.hideNav" />
+	<NavMain v-if="!route.meta.hideNav" :tree="mainNavTree" />
 	<div id="main-wrap" ref="$mainWrap" :class="{ 'nav-space': !route.meta.hideNav }">
 		<!--
 		Usability shortcut

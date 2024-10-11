@@ -32,8 +32,8 @@ b {
 	font-weight: 600;
 }
 p {
-	font-size: $font-size;
-	line-height: $line-height;
+	font-size: inherit;
+	line-height: inherit;
 	margin-bottom: 1rem;
 }
 pre {
