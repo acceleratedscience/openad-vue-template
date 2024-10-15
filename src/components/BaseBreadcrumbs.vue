@@ -105,6 +105,7 @@ $br-height: 20px;
 	font-size: $font-size-small;
 	line-height: $br-height;
 	color: $black-30;
+	margin-bottom: 2rem;
 }
 #breadcrumbs {
 	flex: 1;
