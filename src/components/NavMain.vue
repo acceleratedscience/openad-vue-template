@@ -164,20 +164,10 @@ a.cv-header-name.router-link-exact-active {
 	height: 100%;
 }
 
-// Side panel links
-a.cv-switcher-item-link.router-link-exact-active {
-	text-decoration: none;
-	position: relative;
-}
-a.cv-switcher-item-link.router-link-exact-active::after {
-	content: '';
-	display: block;
-	height: 100%;
-	width: 0.25rem;
-	position: absolute;
-	bottom: 0;
-	left: 0;
-	background: $blue-light;
+/// Icon links (for side panels)
+.bx--btn.bx--btn--icon-only svg {
+	// Carbon fix that avoids white flash on load
+	fill: revert-layer;
 }
 
 /// Stylize focus states
@@ -243,6 +233,21 @@ a.cv-switcher-item-link.bx--switcher__item-link--selected {
 	color: $white;
 	font-weight: 600;
 	background: $black-30;
+}
+// Current-page state
+a.cv-switcher-item-link.router-link-exact-active {
+	text-decoration: none;
+	position: relative;
+}
+a.cv-switcher-item-link.router-link-exact-active::after {
+	content: '';
+	display: block;
+	height: 100%;
+	width: 0.25rem;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	background: $blue-light;
 }
 
 /**
