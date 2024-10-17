@@ -2,6 +2,7 @@
 // Vue
 import { ref, computed } from 'vue'
 
+<<<<<<< HEAD
 // Router
 import { useRouter, useRoute } from 'vue-router'
 const router = useRouter()
@@ -10,12 +11,22 @@ const route = useRoute()
 // // Stores
 // import { useModalStore } from '@/stores/ModalStore'
 // const modalStore = useModalStore()
+=======
+// // Router
+// import { useRouter, useRoute } from 'vue-router'
+// const router = useRouter()
+// const route = useRoute()
+>>>>>>> 0861eb5 (Free Palestine)
 
 // Type declarations
 import type { ComputedRef } from 'vue'
 
 // Components
+<<<<<<< HEAD
 import BaseBreadcrumbs from '@/components/BaseBreadcrumbs.vue'
+=======
+// import NavMain from '@/components/NavMain.vue'
+>>>>>>> 0861eb5 (Free Palestine)
 
 // Utils
 
@@ -89,11 +100,16 @@ function updateFlavor(customFlavor: string) {
 }
 </script>
 
+<<<<<<< HEAD
 <!----------------------------------------------------->
 
 <template>
 	<BaseBreadcrumbs />
 	<h1>Flavor Picker</h1>
+=======
+<template>
+	<h3>Flavor Picker</h3>
+>>>>>>> 0861eb5 (Free Palestine)
 
 	<div id="options" ref="$options">
 		<cv-form @submit.prevent="submitFlavor">
@@ -111,8 +127,11 @@ function updateFlavor(customFlavor: string) {
 	<div v-if="showScreenWidth" id="screen-width">Screen width: {{ screenWidth }} / Options height: {{ $options?.offsetHeight }}</div>
 </template>
 
+<<<<<<< HEAD
 <!----------------------------------------------------->
 
+=======
+>>>>>>> 0861eb5 (Free Palestine)
 <style scoped lang="scss">
 #options {
 	width: 100%;
@@ -126,7 +145,10 @@ function updateFlavor(customFlavor: string) {
 	flex-direction: row;
 	align-items: flex-end;
 	flex: 1;
+<<<<<<< HEAD
 	gap: 0;
+=======
+>>>>>>> 0861eb5 (Free Palestine)
 }
 #display {
 	margin-top: 3rem;
@@ -135,6 +157,12 @@ function updateFlavor(customFlavor: string) {
 	font-size: 1.5rem;
 	margin-top: 0.5rem;
 }
+<<<<<<< HEAD
+=======
+.soft {
+	opacity: 0.3;
+}
+>>>>>>> 0861eb5 (Free Palestine)
 #screen-width {
 	position: fixed;
 	bottom: 0;

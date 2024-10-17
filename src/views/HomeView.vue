@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <script setup lang="ts"></script>
 
 <!----------------------------------------------------->
@@ -53,4 +54,14 @@
 			<li>A few example templates to get you started</li>
 		</ul>
 	</main>
+=======
+<script setup lang="ts">
+import TheWelcome from '../components/TheWelcome.vue'
+</script>
+
+<template>
+    <main>
+        <TheWelcome />
+    </main>
+>>>>>>> 0861eb5 (Free Palestine)
 </template>
