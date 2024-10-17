@@ -185,9 +185,6 @@ function storeScreenWidth() {
 // This is the content wrap that owns the page margin
 // and is centered and limited in width.
 #main-wrap {
-	// display: flex;
-	// flex-direction: column;
-	padding-bottom: 0;
 	box-sizing: border-box;
 	height: min-content; // Required for bottom padding to show
 	min-height: 100vh; // To avoid bottom shadow when content is short.
@@ -203,6 +200,24 @@ function storeScreenWidth() {
 
 // Push content down to fit nav
 #main-wrap.nav-space {
-	margin-top: 3rem;
+	padding-top: 5.5rem;
+}
+
+// Max-width doesn't kick in right away,
+// so we avoid side margins that are too small.
+@media (max-width: $bp-xlarge) {
+	#main-wrap {
+		max-width: none;
+	}
+}
+
+// The top-padding value is not synced with --page-margin
+@media (max-width: $bp-small) {
+	#main-wrap {
+		padding-top: 1.25rem;
+	}
+	#main-wrap.nav-space {
+		padding-top: 4.25rem;
+	}
 }
 </style>
