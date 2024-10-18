@@ -74,6 +74,18 @@ a.lookup > div {
 .soft a.lookup {
 	color: #aaa;
 }
+a[disabled='true'] {
+	pointer-events: none;
+	color: $black-30;
+}
+
+// Error messages
+.error-msg {
+	color: $error;
+}
+.warning-msg {
+	color: $warning-text;
+}
 
 @media (hover: hover) {
 	// Regular links
