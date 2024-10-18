@@ -537,7 +537,6 @@ useStickyObserver('#sticky-content')
 		<cv-form-group>
 			<template #label>Form Group: Dropdowns</template>
 			<template #content>
-				<!-- Inline dropdown -->
 				<div>
 					<cv-dropdown
 						v-model="vmDropdown"
@@ -560,7 +559,6 @@ useStickyObserver('#sticky-content')
 					</cv-dropdown>
 				</div>
 
-				<!-- Light state -->
 				<cv-dropdown
 					v-model="vmDropdown"
 					label="Light state"
@@ -580,7 +578,6 @@ useStickyObserver('#sticky-content')
 					</cv-dropdown-item>
 				</cv-dropdown>
 
-				<!-- Regular state -->
 				<cv-dropdown
 					v-model="vmDropdown"
 					label="Regular state"
@@ -600,7 +597,6 @@ useStickyObserver('#sticky-content')
 					</cv-dropdown-item>
 				</cv-dropdown>
 
-				<!-- Warning state -->
 				<cv-dropdown
 					v-model="vmDropdown"
 					label="Warning state"
@@ -620,7 +616,6 @@ useStickyObserver('#sticky-content')
 					</cv-dropdown-item>
 				</cv-dropdown>
 
-				<!-- Error state -->
 				<cv-dropdown
 					v-model="vmDropdown"
 					label="Error state"

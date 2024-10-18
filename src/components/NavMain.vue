@@ -1,6 +1,4 @@
 <script setup lang="ts">
-<<<<<<< HEAD
-<<<<<<< HEAD
 // Router
 import { useRoute } from 'vue-router'
 const route = useRoute()
@@ -33,64 +31,19 @@ export type NavMainTree = {
 	items: (_NavItem | _NavItemList)[]
 	sidePanels: _SidePanel[]
 }
-=======
-=======
->>>>>>> 0861eb5 (Free Palestine)
-// Vue
-// import { ref, computed } from 'vue'
-
-// // Router
-// import { useRouter, useRoute } from 'vue-router'
-// const router = useRouter()
-// const route = useRoute()
-
-// Type declarations
-// import type { ComputedRef } from 'vue'
-<<<<<<< HEAD
->>>>>>> 0861eb5 (Free Palestine)
-=======
->>>>>>> 0861eb5 (Free Palestine)
 
 // Components
 import BaseIcon from '@/components/BaseIcon.vue'
 
-<<<<<<< HEAD
-<<<<<<< HEAD
 // Props
 const props = defineProps<{
 	tree: NavMainTree
 }>()
 const { homeLink, items, sidePanels } = props.tree
-=======
-=======
->>>>>>> 0861eb5 (Free Palestine)
-// Utils
-
-// Definitions
-
-// Props
-// const props = withDefaults(
-// 	defineProps<{
-// 		foo: number
-// 	}>(),
-// 	{
-// 		foo: 1,
-// 	},
-// )
-
-/**
- * Computed properties
- */
-<<<<<<< HEAD
->>>>>>> 0861eb5 (Free Palestine)
-=======
->>>>>>> 0861eb5 (Free Palestine)
 
 /**
  * Methods
  */
-<<<<<<< HEAD
-<<<<<<< HEAD
 
 function blurFocus() {
 	;(document.activeElement as HTMLAnchorElement)?.blur()
@@ -154,107 +107,14 @@ function blurFocus() {
 							}}</cv-switcher-item-link>
 						</cv-switcher-item>
 					</template>
-=======
-=======
->>>>>>> 0861eb5 (Free Palestine)
-</script>
-
-<template>
-	<cv-header aria-label="Main navigation">
-		<cv-skip-to-content href="#main-content">Skip to content</cv-skip-to-content>
-		<cv-header-name href="javascript:void(0)" prefix="OpenAD">Portal</cv-header-name>
-
-		<!-- Menu items -->
-		<cv-header-nav aria-label="Carbon nav">
-			<cv-header-menu-item href="javascript:void(0)">Link 1</cv-header-menu-item>
-			<cv-header-menu-item href="javascript:void(0)">Link 2</cv-header-menu-item>
-			<cv-header-menu aria-label="Link 3" title="Link 3">
-				<cv-header-menu-item href="javascript:void(0)">Submenu Link 1</cv-header-menu-item>
-				<cv-header-menu-item href="javascript:void(0)">Submenu Link 2</cv-header-menu-item>
-				<cv-header-menu-item href="javascript:void(0)">Submenu Link 3</cv-header-menu-item>
-			</cv-header-menu>
-		</cv-header-nav>
-
-		<!-- Global function icons -->
-		<template v-slot:header-global>
-			<cv-header-global-action
-				aria-label="Notifications"
-				aria-controls="panel-1"
-				@click="onFunc1"
-				label="Function 1"
-				tipPosition="bottom"
-				tipAlignment="start"
-			>
-				<BaseIcon icon="icn-bookmark" />
-			</cv-header-global-action>
-			<cv-header-global-action
-				aria-label="User avatar"
-				@click="onFunc2"
-				aria-controls="panel-2"
-				label="Function 2"
-				tipPosition="bottom"
-				tipAlignment="center"
-			>
-				<BaseIcon icon="icn-terminal" />
-			</cv-header-global-action>
-			<cv-header-global-action
-				aria-label="Account section"
-				aria-controls="account-panel"
-				@click="onFunc3"
-				label="Account"
-				tipPosition="bottom"
-				tipAlignment="end"
-			>
-				<BaseIcon icon="icn-user" />
-			</cv-header-global-action>
-		</template>
-
-		<!-- Right user panel -->
-		<template v-slot:right-panels>
-			<cv-header-panel id="panel-2" @panel-resize="onPanelResize">
-				<div class="title large">Title</div>
-				<hr />
-			</cv-header-panel>
-
-			<cv-header-panel id="panel-1" @panel-resize="onPanelResize">
-				<div class="title large">Title</div>
-				<hr />
-			</cv-header-panel>
-
-			<cv-header-panel id="account-panel" @panel-resize="onPanelResize">
-				<div class="title large">Account</div>
-				<hr />
-				<cv-switcher>
-					<cv-switcher-item>
-						<cv-switcher-item-link href="javascript:void(0)" selected>Account settings</cv-switcher-item-link>
-					</cv-switcher-item>
-					<cv-switcher-item>
-						<cv-switcher-item-link href="javascript:void(0)">Billing</cv-switcher-item-link>
-					</cv-switcher-item>
-
-					<hr />
-
-					<cv-switcher-item>
-						<cv-switcher-item-link href="javascript:void(0)">Logout</cv-switcher-item-link>
-					</cv-switcher-item>
-<<<<<<< HEAD
->>>>>>> 0861eb5 (Free Palestine)
-=======
->>>>>>> 0861eb5 (Free Palestine)
 				</cv-switcher>
 			</cv-header-panel>
 		</template>
 	</cv-header>
 </template>
 
-<<<<<<< HEAD
-<<<<<<< HEAD
 <!----------------------------------------------------->
 
-=======
->>>>>>> 0861eb5 (Free Palestine)
-=======
->>>>>>> 0861eb5 (Free Palestine)
 <style scoped lang="scss">
 /// Remove superfluous borders that interfere with focus state
 .bx--header,
@@ -263,8 +123,6 @@ function blurFocus() {
 	border: none;
 }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
 /// Make top links fit full height
 li.cv-header-menu,
 li.cv-header-menu-item {
@@ -306,16 +164,22 @@ a.cv-header-name.router-link-exact-active {
 	height: 100%;
 }
 
-/// Icon links (for side panels)
-.bx--btn.bx--btn--icon-only svg {
-	// Carbon fix that avoids white flash on load
-	fill: revert-layer;
+// Side panel links
+a.cv-switcher-item-link.router-link-exact-active {
+	text-decoration: none;
+	position: relative;
+}
+a.cv-switcher-item-link.router-link-exact-active::after {
+	content: '';
+	display: block;
+	height: 100%;
+	width: 0.25rem;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	background: $blue-light;
 }
 
-=======
->>>>>>> 0861eb5 (Free Palestine)
-=======
->>>>>>> 0861eb5 (Free Palestine)
 /// Stylize focus states
 .bx--skip-to-content:focus {
 	border: none;
@@ -325,16 +189,10 @@ a.cv-header-name.router-link-exact-active {
 	border: none;
 	background: $black;
 }
-<<<<<<< HEAD
-<<<<<<< HEAD
 .cv-button.bx--btn {
 	// Prevent ugly focus state flash on blur
 	transition: none;
 }
-=======
->>>>>>> 0861eb5 (Free Palestine)
-=======
->>>>>>> 0861eb5 (Free Palestine)
 .cv-button.bx--btn:focus {
 	box-shadow: none;
 	border: none;
@@ -386,35 +244,12 @@ a.cv-switcher-item-link.bx--switcher__item-link--selected {
 	font-weight: 600;
 	background: $black-30;
 }
-<<<<<<< HEAD
-<<<<<<< HEAD
-// Current-page state
-a.cv-switcher-item-link.router-link-exact-active {
-	text-decoration: none;
-	position: relative;
-}
-a.cv-switcher-item-link.router-link-exact-active::after {
-	content: '';
-	display: block;
-	height: 100%;
-	width: 0.25rem;
-	position: absolute;
-	bottom: 0;
-	left: 0;
-	background: $blue-light;
-}
-=======
->>>>>>> 0861eb5 (Free Palestine)
-=======
->>>>>>> 0861eb5 (Free Palestine)
 
 /**
  * Responsive
  */
 
 @media (hover: hover) {
-<<<<<<< HEAD
-<<<<<<< HEAD
 	// Project hover state
 	a.cv-header-name:hover {
 		background: $black;
@@ -431,10 +266,6 @@ a.cv-switcher-item-link.router-link-exact-active::after {
 	}
 
 	// Side panel hover state
-=======
->>>>>>> 0861eb5 (Free Palestine)
-=======
->>>>>>> 0861eb5 (Free Palestine)
 	a.cv-switcher-item-link:not(.bx--switcher__item-link--selected):hover {
 		color: $white;
 		background: $black-10;

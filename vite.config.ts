@@ -33,15 +33,7 @@ export default defineConfig({
 	css: {
 		preprocessorOptions: {
 			scss: {
-<<<<<<< HEAD
-<<<<<<< HEAD
 				additionalData: '@import "@/assets/template-css/_shared.scss";',
-=======
-				additionalData: '@import "@/assets/_shared.scss";',
->>>>>>> 0861eb5 (Free Palestine)
-=======
-				additionalData: '@import "@/assets/_shared.scss";',
->>>>>>> 0861eb5 (Free Palestine)
 			},
 		},
 	},
