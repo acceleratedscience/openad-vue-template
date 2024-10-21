@@ -17,15 +17,11 @@ const mainStore = useMainStore()
 
 // Type declarations
 import type { ActionOption } from '@/components/OverflowMenu.vue'
+import type { CheckboxItem } from '@/components/FormCheckboxes.vue'
 type MultiSelectOption = {
 	name: string
 	label: string
 	value: string
-}
-type CheckBoxRadioOption = {
-	label: string
-	value: string
-	disabled?: boolean
 }
 
 // Components
@@ -39,6 +35,7 @@ import BasePagination from '@/components/BasePagination.vue'
 import OverflowMenu from '@/components/OverflowMenu.vue'
 import ExpandableSection from '@/components/ExpandableSection.vue'
 import BaseIconButton from '@/components/BaseIconButton.vue'
+import FormCheckboxes from '@/components/FormCheckboxes.vue'
 import BaseSection___________________________________ from '@/components/BaseSection.vue'
 
 // Utils
@@ -74,7 +71,7 @@ const multiSelectOptions = [
 ]
 const vmMultiselect = ref<MultiSelectOption[]>([])
 const vmPagination = ref<number>(1)
-const checkboxRadioOptions: CheckBoxRadioOption[] = [
+const checkboxRadioOptions: CheckboxItem[] = [
 	{ label: 'Option A', value: 'a' },
 	{ label: 'Option B', value: 'b' },
 	{ label: 'Option C', value: 'c', disabled: true },
@@ -431,7 +428,7 @@ function onOther() {
 }
 
 /**
- * Logic
+ * Before mount
  */
 
 useStickyObserver('#sticky-content')
@@ -534,9 +531,10 @@ useStickyObserver('#sticky-content')
 
 	<cv-form>
 		<!-- Group 1 -->
-		<cv-form-group>
+		<cv-form-group style="display: none">
 			<template #label>Form Group: Dropdowns</template>
 			<template #content>
+				<!-- Inline dropdown -->
 				<div>
 					<cv-dropdown
 						v-model="vmDropdown"
@@ -559,6 +557,7 @@ useStickyObserver('#sticky-content')
 					</cv-dropdown>
 				</div>
 
+				<!-- Light state -->
 				<cv-dropdown
 					v-model="vmDropdown"
 					label="Light state"
@@ -578,6 +577,7 @@ useStickyObserver('#sticky-content')
 					</cv-dropdown-item>
 				</cv-dropdown>
 
+				<!-- Regular state -->
 				<cv-dropdown
 					v-model="vmDropdown"
 					label="Regular state"
@@ -597,6 +597,7 @@ useStickyObserver('#sticky-content')
 					</cv-dropdown-item>
 				</cv-dropdown>
 
+				<!-- Warning state -->
 				<cv-dropdown
 					v-model="vmDropdown"
 					label="Warning state"
@@ -616,6 +617,7 @@ useStickyObserver('#sticky-content')
 					</cv-dropdown-item>
 				</cv-dropdown>
 
+				<!-- Error state -->
 				<cv-dropdown
 					v-model="vmDropdown"
 					label="Error state"
@@ -649,29 +651,17 @@ useStickyObserver('#sticky-content')
 		<cv-form-group>
 			<template #label>Form Group: Checkboxes & radio buttons</template>
 			<template #content>
-				<div class="checkbox-wrap cbw-h">
-					<cv-checkbox
-						v-for="(option, i) in checkboxRadioOptions"
-						:key="i"
-						@change="onCheckboxChange"
-						v-model="vmCheckbox"
-						:label="option.label"
-						:value="option.value"
-						:disabled="option.disabled"
-					></cv-checkbox>
-				</div>
+				<FormCheckboxes label="Horizontal checkboxes" v-model="vmCheckbox" :items="checkboxRadioOptions" :horizontal="true" />
 
-				<div class="checkbox-wrap cbw-v">
-					<cv-checkbox
-						v-for="({ value, label, disabled }, i) in checkboxRadioOptions"
-						:key="i"
-						@change="onCheckboxChange"
-						v-model="vmCheckbox"
-						:label="label"
-						:value="value"
-						:disabled="disabled"
-					></cv-checkbox>
-				</div>
+				<FormCheckboxes label="Vertical checkboxes" v-model="vmCheckbox" :items="checkboxRadioOptions" :horizontal="false" />
+
+				<FormCheckboxes
+					label="Invalid checkboxes"
+					v-model="vmCheckbox"
+					:items="checkboxRadioOptions"
+					:horizontal="true"
+					invalidMessage="Error"
+				/>
 
 				<small style="margin-top: -1.5rem" class="soft">Checked: {{ vmCheckbox }}</small>
 
