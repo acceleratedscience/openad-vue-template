@@ -78,6 +78,20 @@ form.cv-form .cv-form-group > legend {
 	padding: 0 0.5rem;
 }
 
+// Labels
+label {
+	color: #525252;
+	display: block;
+	font-size: $font-size-xsmall;
+	margin-bottom: 0.5rem;
+}
+
+// Inputs
+input {
+	font-size: inherit;
+	color: inherit;
+}
+
 // Checkboxes
 .checkbox-wrap {
 	display: flex;
@@ -93,12 +107,12 @@ form.cv-form .cv-form-group > legend {
 .checkbox-wrap.cbw-h > div.cv-checkbox:first-of-type {
 	margin-top: 0;
 }
-.checkbox-group > label {
-	color: #525252;
-	display: block;
-	font-size: $font-size-xsmall;
-	margin-bottom: 0.5rem;
-}
+// .checkbox-group > label {
+// 	color: #525252;
+// 	display: block;
+// 	font-size: $font-size-xsmall;
+// 	margin-bottom: 0.5rem;
+// }
 .checkbox-wrap > div.cv-checkbox {
 	flex: 0;
 }
